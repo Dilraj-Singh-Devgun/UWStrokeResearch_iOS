@@ -21,11 +21,11 @@ public class QuestionHandler {
     
     func getCurrentQuestion() -> (node:Node?, question:String) {
         if self.currentQuestion?.type == "OR" {
-            return (self.currentQuestion, (self.currentQuestion as! LogicNode).first! + " " + (self.currentQuestion as! LogicNode).second!)
+            return (self.currentQuestion, ((self.currentQuestion as! LogicNode).firstN?.question!)! + " : " + ((self.currentQuestion as! LogicNode).secondN?.question!)!)
         }
         else if self.currentQuestion?.type == "RESULT" {
             let rn = self.currentQuestion as! ResultNode
-            return (self.currentQuestion, "Please contact " + rn.researcher + " at " + rn.phone)
+            return (self.currentQuestion, rn.question + ". Please contact " + rn.researcher + " at " + rn.phone)
         }
         return (self.currentQuestion, (self.currentQuestion?.question!)!)
     }
