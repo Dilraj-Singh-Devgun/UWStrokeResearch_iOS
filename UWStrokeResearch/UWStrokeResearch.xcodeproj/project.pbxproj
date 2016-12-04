@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4001E511DF389CC00237F5F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4001E501DF389CC00237F5F /* SwiftyJSON.swift */; };
+		B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */ = {isa = PBXBuildFile; fileRef = B4001E521DF38B3800237F5F /* stroke_trial_decision_tree.json */; };
+		B4001E581DF38DA500237F5F /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4001E571DF38DA500237F5F /* JSONParser.swift */; };
 		B40B05A41DEBA3DE008AF173 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05A31DEBA3DE008AF173 /* AppDelegate.swift */; };
 		B40B05A61DEBA3DE008AF173 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05A51DEBA3DE008AF173 /* ViewController.swift */; };
 		B40B05A91DEBA3DE008AF173 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B40B05A71DEBA3DE008AF173 /* Main.storyboard */; };
@@ -20,6 +23,8 @@
 		B40B05D91DEBAD61008AF173 /* RangeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05D81DEBAD61008AF173 /* RangeNode.swift */; };
 		B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */; };
 		B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */; };
+		B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */; };
+		B4328B421DF3E49C00072B6F /* NodeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B411DF3E49C00072B6F /* NodeStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B4001E501DF389CC00237F5F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		B4001E521DF38B3800237F5F /* stroke_trial_decision_tree.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stroke_trial_decision_tree.json; sourceTree = "<group>"; };
+		B4001E571DF38DA500237F5F /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONParser.swift; path = Model/JSONParser.swift; sourceTree = "<group>"; };
 		B40B05A01DEBA3DE008AF173 /* UWStrokeResearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWStrokeResearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B40B05A31DEBA3DE008AF173 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B40B05A51DEBA3DE008AF173 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +67,8 @@
 		B40B05D81DEBAD61008AF173 /* RangeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeNode.swift; path = Model/RangeNode.swift; sourceTree = "<group>"; };
 		B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultNode.swift; path = Model/ResultNode.swift; sourceTree = "<group>"; };
 		B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteNode.swift; path = Model/DiscreteNode.swift; sourceTree = "<group>"; };
+		B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionHandler.swift; path = Model/QuestionHandler.swift; sourceTree = "<group>"; };
+		B4328B411DF3E49C00072B6F /* NodeStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B4001E541DF38B4300237F5F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B4001E521DF38B3800237F5F /* stroke_trial_decision_tree.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		B40B05971DEBA3DE008AF173 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +127,7 @@
 		B40B05A21DEBA3DE008AF173 /* UWStrokeResearch */ = {
 			isa = PBXGroup;
 			children = (
+				B4001E541DF38B4300237F5F /* Resources */,
 				B40B05D11DEBA4C1008AF173 /* Model */,
 				B40B05A31DEBA3DE008AF173 /* AppDelegate.swift */,
 				B40B05A51DEBA3DE008AF173 /* ViewController.swift */,
@@ -141,6 +160,10 @@
 		B40B05D11DEBA4C1008AF173 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B4328B411DF3E49C00072B6F /* NodeStack.swift */,
+				B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */,
+				B4001E571DF38DA500237F5F /* JSONParser.swift */,
+				B4001E501DF389CC00237F5F /* SwiftyJSON.swift */,
 				B40B05D21DEBA4D7008AF173 /* Node.swift */,
 				B40B05D41DEBA74F008AF173 /* Range.swift */,
 				B40B05D61DEBAAC5008AF173 /* LogicNode.swift */,
@@ -263,6 +286,7 @@
 			files = (
 				B40B05AE1DEBA3DE008AF173 /* LaunchScreen.storyboard in Resources */,
 				B40B05AB1DEBA3DE008AF173 /* Assets.xcassets in Resources */,
+				B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */,
 				B40B05A91DEBA3DE008AF173 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,12 +312,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4001E581DF38DA500237F5F /* JSONParser.swift in Sources */,
+				B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */,
+				B4328B421DF3E49C00072B6F /* NodeStack.swift in Sources */,
 				B40B05D31DEBA4D7008AF173 /* Node.swift in Sources */,
 				B40B05D91DEBAD61008AF173 /* RangeNode.swift in Sources */,
 				B40B05A61DEBA3DE008AF173 /* ViewController.swift in Sources */,
 				B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */,
 				B40B05D71DEBAAC5008AF173 /* LogicNode.swift in Sources */,
 				B40B05A41DEBA3DE008AF173 /* AppDelegate.swift in Sources */,
+				B4001E511DF389CC00237F5F /* SwiftyJSON.swift in Sources */,
 				B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */,
 				B40B05D51DEBA74F008AF173 /* Range.swift in Sources */,
 			);
@@ -544,6 +572,7 @@
 				B40B05CA1DEBA3DE008AF173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B40B05CB1DEBA3DE008AF173 /* Build configuration list for PBXNativeTarget "UWStrokeResearchTests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +581,7 @@
 				B40B05CD1DEBA3DE008AF173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B40B05CE1DEBA3DE008AF173 /* Build configuration list for PBXNativeTarget "UWStrokeResearchUITests" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +590,7 @@
 				B40B05D01DEBA3DE008AF173 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

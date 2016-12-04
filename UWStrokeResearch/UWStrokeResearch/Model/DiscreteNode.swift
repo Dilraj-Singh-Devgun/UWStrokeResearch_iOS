@@ -13,7 +13,7 @@ import Foundation
 
 class DiscreteNode: Node {
     var connections:[String:String]!
-    var nodeConnections:[String: Node]!
+    var nodeConnections:[String: Node?]!
     
     init(nc: Int, qid: String, q: String) {
         super.init(nc: nc, qid: qid, q: q, t: "BUTTON")
@@ -25,7 +25,7 @@ class DiscreteNode: Node {
         self.connections.updateValue(next, forKey: option)
     }
     
-    func addNode(option:String, next:Node) {
+    func addNode(option:String, next:Node?) {
         self.nodeConnections.updateValue(next, forKey: option)
     }
     
