@@ -13,10 +13,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let parser = JSONParser()
-        let root = parser.getNodeTree()
-        print(root?.QID)
-        print((root as! DiscreteNode).nodeConnections)
+        let handler = QuestionHandler()
+        print(handler.getCurrentQuestion().question + " " + (handler.getCurrentQuestion().node!.QID)!)
+        
+        handler.giveInput(input: "start", forNode: nil)
+        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
+        
+        handler.giveInput(input: "yes", forNode: nil)
+        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
+        
+        handler.giveInput(input: "no", forNode: nil)
+        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
+        
+        handler.giveInput(input: "8", forNode: nil)
+        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
+        
+        handler.giveInput(input: "yes", forNode: (handler.currentQuestion as! LogicNode).firstN)
+        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
     }
 
     override func didReceiveMemoryWarning() {
