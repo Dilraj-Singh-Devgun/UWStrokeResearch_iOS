@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let parser = JSONParser()
+        let root = parser.getNodeTree()
+        print(root?.QID)
+        print((root as! DiscreteNode).nodeConnections)
     }
 
     override func didReceiveMemoryWarning() {

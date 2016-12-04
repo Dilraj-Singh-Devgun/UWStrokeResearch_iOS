@@ -16,7 +16,7 @@ import Foundation
 class RangeNode:Node {
     
     var connections:[Range: String]!
-    var nodeConnections:[Range: Node]!
+    var nodeConnections:[Range: Node?]!
     
     init(nc:Int, qid:String, q:String){
         super.init(nc: nc, qid: qid, q: q, t: "NUMBER")
@@ -29,7 +29,7 @@ class RangeNode:Node {
         self.connections.updateValue(next, forKey: range)
     }
     
-    func addRangeNode(lower:String, upper:String, type:String, next:Node) {
+    func addRangeNode(lower:String, upper:String, type:String, next:Node?) {
         let range = Range(lower: lower, upper: upper, t: type)
         self.nodeConnections.updateValue(next, forKey: range)
     }
@@ -39,7 +39,7 @@ class RangeNode:Node {
         self.connections.updateValue(next, forKey: equals)
     }
     
-    func addEqualsNode(value:String, next:Node) {
+    func addEqualsNode(value:String, next:Node?) {
         let equals = Range(value: value)
         self.nodeConnections.updateValue(next, forKey: equals)
     }

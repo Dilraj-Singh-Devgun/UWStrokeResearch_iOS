@@ -37,7 +37,7 @@ class LogicNode:Node {
         self.secondN = nil
     }
     
-    init(nc: Int, qid: String, q: String, t: String, fn:Node, sn:Node) {
+    init(nc: Int, qid: String, q: String, t: String, fn:Node?, sn:Node?) {
         super.init(nc: nc, qid: qid, q: q, t: t)
         self.first = nil
         self.second = nil
