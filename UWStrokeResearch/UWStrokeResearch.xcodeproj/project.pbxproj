@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B4001E511DF389CC00237F5F /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4001E501DF389CC00237F5F /* SwiftyJSON.swift */; };
 		B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */ = {isa = PBXBuildFile; fileRef = B4001E521DF38B3800237F5F /* stroke_trial_decision_tree.json */; };
 		B4001E581DF38DA500237F5F /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4001E571DF38DA500237F5F /* JSONParser.swift */; };
 		B40B05A41DEBA3DE008AF173 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05A31DEBA3DE008AF173 /* AppDelegate.swift */; };
@@ -24,9 +23,14 @@
 		B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */; };
 		B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */; };
 		B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */; };
-		B4328B421DF3E49C00072B6F /* NodeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B411DF3E49C00072B6F /* NodeStack.swift */; };
 		B4D2DF7C1E0B79C3000910F8 /* TestXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */; };
 		B4D2DF7E1E0B7A2E000910F8 /* TestXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */; };
+		B4D2DF811E0C7B8E000910F8 /* BaseQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2DF801E0C7B8E000910F8 /* BaseQuestionView.xib */; };
+		B4D2DF831E0C846B000910F8 /* BaseQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */; };
+		B4D2DF891E0C92FD000910F8 /* RangeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF881E0C92FD000910F8 /* RangeInputView.swift */; };
+		B4D2DF8B1E0C9349000910F8 /* NodeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8A1E0C9349000910F8 /* NodeStack.swift */; };
+		B4D2DF8D1E0C9362000910F8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8C1E0C9362000910F8 /* SwiftyJSON.swift */; };
+		B4D2DF8F1E0C937D000910F8 /* DiscreteInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8E1E0C937D000910F8 /* DiscreteInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B4001E501DF389CC00237F5F /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		B4001E521DF38B3800237F5F /* stroke_trial_decision_tree.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stroke_trial_decision_tree.json; sourceTree = "<group>"; };
 		B4001E571DF38DA500237F5F /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONParser.swift; path = Model/JSONParser.swift; sourceTree = "<group>"; };
 		B40B05A01DEBA3DE008AF173 /* UWStrokeResearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UWStrokeResearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,9 +73,14 @@
 		B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultNode.swift; path = Model/ResultNode.swift; sourceTree = "<group>"; };
 		B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteNode.swift; path = Model/DiscreteNode.swift; sourceTree = "<group>"; };
 		B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionHandler.swift; path = Model/QuestionHandler.swift; sourceTree = "<group>"; };
-		B4328B411DF3E49C00072B6F /* NodeStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeStack.swift; sourceTree = "<group>"; };
 		B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestXib.xib; path = View/TestXib.xib; sourceTree = "<group>"; };
 		B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestXib.swift; path = View/TestXib.swift; sourceTree = "<group>"; };
+		B4D2DF801E0C7B8E000910F8 /* BaseQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BaseQuestionView.xib; path = View/BaseQuestionView.xib; sourceTree = "<group>"; };
+		B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseQuestionView.swift; path = View/BaseQuestionView.swift; sourceTree = "<group>"; };
+		B4D2DF881E0C92FD000910F8 /* RangeInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeInputView.swift; path = View/RangeInputView.swift; sourceTree = "<group>"; };
+		B4D2DF8A1E0C9349000910F8 /* NodeStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeStack.swift; path = Model/NodeStack.swift; sourceTree = "<group>"; };
+		B4D2DF8C1E0C9362000910F8 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Model/SwiftyJSON.swift; sourceTree = "<group>"; };
+		B4D2DF8E1E0C937D000910F8 /* DiscreteInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteInputView.swift; path = View/DiscreteInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,10 +173,10 @@
 		B40B05D11DEBA4C1008AF173 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B4328B411DF3E49C00072B6F /* NodeStack.swift */,
+				B4D2DF8A1E0C9349000910F8 /* NodeStack.swift */,
 				B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */,
 				B4001E571DF38DA500237F5F /* JSONParser.swift */,
-				B4001E501DF389CC00237F5F /* SwiftyJSON.swift */,
+				B4D2DF8C1E0C9362000910F8 /* SwiftyJSON.swift */,
 				B40B05D21DEBA4D7008AF173 /* Node.swift */,
 				B40B05D41DEBA74F008AF173 /* Range.swift */,
 				B40B05D61DEBAAC5008AF173 /* LogicNode.swift */,
@@ -184,6 +192,10 @@
 			children = (
 				B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */,
 				B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */,
+				B4D2DF801E0C7B8E000910F8 /* BaseQuestionView.xib */,
+				B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */,
+				B4D2DF8E1E0C937D000910F8 /* DiscreteInputView.swift */,
+				B4D2DF881E0C92FD000910F8 /* RangeInputView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -303,6 +315,7 @@
 				B40B05AB1DEBA3DE008AF173 /* Assets.xcassets in Resources */,
 				B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */,
 				B40B05A91DEBA3DE008AF173 /* Main.storyboard in Resources */,
+				B4D2DF811E0C7B8E000910F8 /* BaseQuestionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,17 +342,20 @@
 			files = (
 				B4001E581DF38DA500237F5F /* JSONParser.swift in Sources */,
 				B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */,
-				B4328B421DF3E49C00072B6F /* NodeStack.swift in Sources */,
 				B40B05D31DEBA4D7008AF173 /* Node.swift in Sources */,
 				B40B05D91DEBAD61008AF173 /* RangeNode.swift in Sources */,
+				B4D2DF8B1E0C9349000910F8 /* NodeStack.swift in Sources */,
 				B4D2DF7E1E0B7A2E000910F8 /* TestXib.swift in Sources */,
+				B4D2DF891E0C92FD000910F8 /* RangeInputView.swift in Sources */,
 				B40B05A61DEBA3DE008AF173 /* ViewController.swift in Sources */,
 				B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */,
+				B4D2DF8F1E0C937D000910F8 /* DiscreteInputView.swift in Sources */,
 				B40B05D71DEBAAC5008AF173 /* LogicNode.swift in Sources */,
 				B40B05A41DEBA3DE008AF173 /* AppDelegate.swift in Sources */,
-				B4001E511DF389CC00237F5F /* SwiftyJSON.swift in Sources */,
 				B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */,
+				B4D2DF8D1E0C9362000910F8 /* SwiftyJSON.swift in Sources */,
 				B40B05D51DEBA74F008AF173 /* Range.swift in Sources */,
+				B4D2DF831E0C846B000910F8 /* BaseQuestionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

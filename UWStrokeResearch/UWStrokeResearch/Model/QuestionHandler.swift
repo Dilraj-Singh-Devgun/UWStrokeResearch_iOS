@@ -34,6 +34,11 @@ public class QuestionHandler {
         return (self.currentQuestion?.type)!
     }
     
+    func goBackQuestion() {
+        let lastQuestion = history.pop()
+        self.currentQuestion = lastQuestion
+    }
+    
     //If current node is an OR node we must have a node passed in that will be the node that the input is for
     func giveInput(input:String, forNode:Node?) -> (nodes: [Node?], message: String) {
         switch (self.currentQuestion?.type)! {

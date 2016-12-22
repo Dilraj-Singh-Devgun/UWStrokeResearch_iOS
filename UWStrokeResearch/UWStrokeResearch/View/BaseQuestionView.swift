@@ -1,38 +1,42 @@
 //
-//  TestXib.swift
+//  BaseQuestionView.swift
 //  UWStrokeResearch
 //
-//  Created by Dilraj Devgun on 12/21/16.
+//  Created by Dilraj Devgun on 12/22/16.
 //  Copyright © 2016 Dilraj Devgun. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable class TestXib: UIView {
-
-    @IBInspectable var innerViewColor:UIColor = UIColor.black
-    @IBOutlet weak var innerView: UIView!
+@IBDesignable class BaseQuestionView: UIView {
+    
+    @IBOutlet weak var QuestionLabel: UILabel!
+    @IBOutlet weak var detailAnswerView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
-        self.innerView.backgroundColor = UIColor.black
+    }
+    
+    init(frame:CGRect, question:String) {
+        super.init(frame: frame)
+        setUp()
+        self.QuestionLabel.text = question
+        self.QuestionLabel.adjustsFontSizeToFitWidth = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUp()
-        self.innerView.backgroundColor = UIColor.black
     }
     
     override func prepareForInterfaceBuilder() {
         setUp()
-        self.innerView.backgroundColor = UIColor.black
     }
     
     func setUp() {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "TestXib", bundle: bundle)
+        let nib = UINib(nibName: "BaseQuestionView", bundle: bundle)
         let viewFromNib = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         addSubview(viewFromNib)
         viewFromNib.translatesAutoresizingMaskIntoConstraints = false
@@ -52,4 +56,6 @@ import UIKit
             )
         )
     }
+    
+    
 }
