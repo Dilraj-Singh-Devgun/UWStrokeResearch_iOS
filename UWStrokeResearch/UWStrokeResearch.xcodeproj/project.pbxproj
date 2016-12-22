@@ -25,6 +25,8 @@
 		B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */; };
 		B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */; };
 		B4328B421DF3E49C00072B6F /* NodeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B411DF3E49C00072B6F /* NodeStack.swift */; };
+		B4D2DF7C1E0B79C3000910F8 /* TestXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */; };
+		B4D2DF7E1E0B7A2E000910F8 /* TestXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteNode.swift; path = Model/DiscreteNode.swift; sourceTree = "<group>"; };
 		B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionHandler.swift; path = Model/QuestionHandler.swift; sourceTree = "<group>"; };
 		B4328B411DF3E49C00072B6F /* NodeStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeStack.swift; sourceTree = "<group>"; };
+		B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestXib.xib; path = View/TestXib.xib; sourceTree = "<group>"; };
+		B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestXib.swift; path = View/TestXib.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 				B40B05A31DEBA3DE008AF173 /* AppDelegate.swift */,
 				B40B05A51DEBA3DE008AF173 /* ViewController.swift */,
 				B40B05A71DEBA3DE008AF173 /* Main.storyboard */,
+				B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */,
+				B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */,
 				B40B05AA1DEBA3DE008AF173 /* Assets.xcassets */,
 				B40B05AC1DEBA3DE008AF173 /* LaunchScreen.storyboard */,
 				B40B05AF1DEBA3DE008AF173 /* Info.plist */,
@@ -284,6 +290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4D2DF7C1E0B79C3000910F8 /* TestXib.xib in Resources */,
 				B40B05AE1DEBA3DE008AF173 /* LaunchScreen.storyboard in Resources */,
 				B40B05AB1DEBA3DE008AF173 /* Assets.xcassets in Resources */,
 				B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */,
@@ -317,6 +324,7 @@
 				B4328B421DF3E49C00072B6F /* NodeStack.swift in Sources */,
 				B40B05D31DEBA4D7008AF173 /* Node.swift in Sources */,
 				B40B05D91DEBAD61008AF173 /* RangeNode.swift in Sources */,
+				B4D2DF7E1E0B7A2E000910F8 /* TestXib.swift in Sources */,
 				B40B05A61DEBA3DE008AF173 /* ViewController.swift in Sources */,
 				B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */,
 				B40B05D71DEBAAC5008AF173 /* LogicNode.swift in Sources */,
@@ -475,6 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y5SA8QZY2L;
 				INFOPLIST_FILE = UWStrokeResearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dsd.UWStrokeResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -488,6 +497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y5SA8QZY2L;
 				INFOPLIST_FILE = UWStrokeResearch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dsd.UWStrokeResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
