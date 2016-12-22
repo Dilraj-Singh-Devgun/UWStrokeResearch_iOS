@@ -136,8 +136,7 @@
 				B40B05A31DEBA3DE008AF173 /* AppDelegate.swift */,
 				B40B05A51DEBA3DE008AF173 /* ViewController.swift */,
 				B40B05A71DEBA3DE008AF173 /* Main.storyboard */,
-				B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */,
-				B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */,
+				B4D2DF7F1E0B8486000910F8 /* View */,
 				B40B05AA1DEBA3DE008AF173 /* Assets.xcassets */,
 				B40B05AC1DEBA3DE008AF173 /* LaunchScreen.storyboard */,
 				B40B05AF1DEBA3DE008AF173 /* Info.plist */,
@@ -178,6 +177,15 @@
 				B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		B4D2DF7F1E0B8486000910F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */,
+				B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
