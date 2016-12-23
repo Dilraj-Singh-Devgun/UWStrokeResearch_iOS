@@ -43,8 +43,8 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.setupDetailView()
     }
     
@@ -61,7 +61,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
                 self.questionView.addSubview(qv)
                 break
             case "NUMBER":
-                let qv = RangeQuestionView(frame: self.questionView.bounds, question: self.currentQuestion.message)
+                let qv = RangeQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height:self.questionView.frame.height), question: self.currentQuestion.message)
                 qv.delegate = self
                 if let _ = currentView {
                     self.currentView.removeFromSuperview()

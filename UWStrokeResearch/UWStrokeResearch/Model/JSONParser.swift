@@ -11,6 +11,7 @@ import UIKit
 
 public class JSONParser {
     
+    //The constructor
     func getNodeTree() -> Node?{
         var root:Node?
         var jsn:JSON?
@@ -20,7 +21,6 @@ public class JSONParser {
                 jsn = JSON(data: data as Data, options: .allowFragments, error: nil)
             }
         }
-        
         if let json = jsn {
             print("json loaded")
             print()
@@ -34,6 +34,7 @@ public class JSONParser {
         return root
     }
     
+    //processes logic nodes using the json file for reference
     func processNode(QID:String, json:JSON) -> Node? {
         let type = json[QID]["type"].string!
         print(QID + " " + type)
