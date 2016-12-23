@@ -14,12 +14,15 @@ public class QuestionHandler {
     var parser:JSONParser!
     
     init() {
+        //initialize the stack, json parser, and the root node
         self.history = NodeStack()
         self.parser = JSONParser()
         self.currentQuestion = parser.getNodeTree()
     }
     
+    //returns the current question and the question/message of the current node
     func getCurrentQuestion() -> (node:Node?, question:String) {
+        //if the current question is an OR return the 
         if self.currentQuestion?.type == "OR" {
             return (self.currentQuestion, ((self.currentQuestion as! LogicNode).firstN?.question!)! + " : " + ((self.currentQuestion as! LogicNode).secondN?.question!)!)
         }
@@ -40,7 +43,7 @@ public class QuestionHandler {
     }
     
     //If current node is an OR node we must have a node passed in that will be the node that the input is for
-    func giveInput(input:String, forNode:Node?) -> (nodes: [Node?], message: String) {
+    func giveInput(input:String, forNode:Node?) -> (nodes: Node?, message: String) {
         switch (self.currentQuestion?.type)! {
         case "NUMBER":
             let nextNumber = (self.currentQuestion as! RangeNode).nodeConnections
@@ -49,13 +52,13 @@ public class QuestionHandler {
                     if range.isBetween(value: answer) {
                         self.history.push(self.currentQuestion!)
                         self.currentQuestion = value
-                        return ([self.currentQuestion], (self.currentQuestion?.question)!)
+                        return (self.currentQuestion, (self.currentQuestion?.question)!)
                     }
                 }
-                return ([], "Please enter a numeric value inside the specified range")
+                return (nil, "Please enter a numeric value inside the specified range")
             }
             else {
-                return ([], "Please enter a numeric value")
+                return (nil, "Please enter a numeric value")
             }
         case "BUTTON":
             let nextNodes = (self.currentQuestion as! DiscreteNode).nodeConnections
@@ -64,20 +67,20 @@ public class QuestionHandler {
                 if (value == answer) {
                     self.history.push(self.currentQuestion!)
                     self.currentQuestion = next
-                    return ([self.currentQuestion], (self.currentQuestion?.question)!)
+                    return (self.currentQuestion, (self.currentQuestion?.question)!)
                 }
             }
-            return ([], "Please select a valid response")
+            return (nil, "Please select a valid response")
         case "OR":
             self.history.push(self.currentQuestion!)
             self.currentQuestion = moveORNode(input: input, node: forNode!)
-            return ([self.currentQuestion], (self.currentQuestion?.question)!)
+            return (self.currentQuestion, (self.currentQuestion?.question)!)
         case "UNKNOWN":
-            return ([self.currentQuestion], "This does not require an answer")
+            return (self.currentQuestion, "This does not require an answer")
         case "RESULT":
-            return ([self.currentQuestion], "This does not require an answer")
+            return (self.currentQuestion, "This does not require an answer")
         default:
-            return ([], "This does not require an answer")
+            return (nil, "This does not require an answer")
         }
     }
     

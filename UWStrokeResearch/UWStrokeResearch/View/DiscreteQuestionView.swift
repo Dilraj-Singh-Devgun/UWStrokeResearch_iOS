@@ -1,5 +1,5 @@
 //
-//  BaseQuestionView.swift
+//  DiscreteQuestionView.swift
 //  UWStrokeResearch
 //
 //  Created by Dilraj Devgun on 12/22/16.
@@ -8,9 +8,14 @@
 
 import UIKit
 
-@IBDesignable class BaseQuestionView: UIView {
-    
+protocol DiscreteQuestionViewDelegate {
+    func discreteQuestionViewDidPressButton(sender:UIButton, pressed:Int)
+}
+
+class DiscreteQuestionView: UIView {
+
     @IBOutlet weak var QuestionLabel: UILabel!
+    var delegate:DiscreteQuestionViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,7 +40,7 @@ import UIKit
     
     func setUp() {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "BaseQuestionView", bundle: bundle)
+        let nib = UINib(nibName: "DiscreteQuestionView", bundle: bundle)
         let viewFromNib = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         addSubview(viewFromNib)
         viewFromNib.translatesAutoresizingMaskIntoConstraints = false
@@ -56,8 +61,13 @@ import UIKit
         )
     }
     
+    @IBAction func pressedButton(_ sender: UIButton) {
+        if let _ = self.delegate {
+            delegate?.discreteQuestionViewDidPressButton(sender: sender, pressed: sender.tag)
+        }
+    }
+    
     func setQuestion(question:String) {
         self.QuestionLabel.text = question
     }
-    
 }
