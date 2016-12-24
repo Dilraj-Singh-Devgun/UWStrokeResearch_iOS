@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate {
+class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     var handler:QuestionHandler!
     var currentQuestion:(node: Node?, message:String)!
-    @IBOutlet weak var questionView: UIView!
     var currentView:UIView!
+    @IBOutlet weak var tableView: UITableView!
+    var cellViews:[UIView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,10 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
         let node = self.handler.getCurrentQuestion().node
         self.currentQuestion = (node, handler.getCurrentQuestion().question)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        cellViews = []
+        
 //
 //        handler.giveInput(input: "yes", forNode: nil)
 //        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
@@ -50,24 +55,23 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     func setupDetailView() {
         if let _ = self.currentQuestion.node {
+            var qv:UIView
             switch self.currentQuestion.node!.type {
             case "BUTTON":
-                let qv = DiscreteQuestionView(frame: self.questionView.bounds, question: self.currentQuestion.message)
-                qv.delegate = self
+                qv = DiscreteQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
+                (qv as! DiscreteQuestionView).delegate = self
                 if let _ = currentView {
                     self.currentView.removeFromSuperview()
                 }
-                self.currentView = qv
-                self.questionView.addSubview(qv)
+                self.cellViews.append(qv)
                 break
             case "NUMBER":
-                let qv = RangeQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height:self.questionView.frame.height), question: self.currentQuestion.message)
-                qv.delegate = self
+                qv = RangeQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
+                (qv as! RangeQuestionView).delegate = self
                 if let _ = currentView {
                     self.currentView.removeFromSuperview()
                 }
-                self.currentView = qv
-                self.questionView.addSubview(qv)
+                self.cellViews.append(qv)
                 break
             case "OR":
                 //use the logic node fn and sn to decide which nodes it is
@@ -79,6 +83,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             default:
                 break
             }
+            self.tableView.reloadData()
         }
     }
     
@@ -100,6 +105,20 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         let node = self.handler.getCurrentQuestion().node
         self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
         self.setupDetailView()
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.cellViews.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.addSubview(self.cellViews[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 }
 

@@ -108,30 +108,43 @@ public class QuestionHandler {
         }
     }
     
-    
+    //Handler for the special case of an OR node we must have a node which will specify the node we are answering in the OR question
     func moveORNode(input:String, node:Node) -> Node? {
+        //switch based on the node's type
         switch node.type {
         case "NUMBER":
+            //get a dictionary of input ranges and nodes of shooting from the node
             let nextNumber = (node as! RangeNode).nodeConnections
+            //try casting the input as an int
             if let answer = Int(input) {
+                //loop through all values in the dictionary
                 for (range, value) in nextNumber! {
+                    //if the input is in the current range return the node associated with it
                     if range.isBetween(value: answer) {
                         return value
                     }
                 }
+                //return nil if the range is not found
                 return nil
             }
             else {
+                //return nil if the cast fails
                 return nil
             }
         case "BUTTON":
+            //get all connected nodes in dictionary format
             let nextNodes = (node as! DiscreteNode).nodeConnections
+            //change our input to lower case
             let answer = input.lowercased()
+            //loop through the dictionary
             for (value, next) in nextNodes! {
+                //if the value matches the input return the associated node
                 if (value == answer) {
                     return next
                 }
             }
+            //return nil if the value is found 
+            return nil
         case "OR": break
             //We have not handled the case where an or leads to another or question
         case "UNKNOWN":
