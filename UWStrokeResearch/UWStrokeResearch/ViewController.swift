@@ -15,32 +15,20 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     var currentView:UIView!
     @IBOutlet weak var tableView: UITableView!
     var cellViews:[UIView]!
+    @IBOutlet weak var markerView: UIView!
+    @IBOutlet weak var markerViewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.handler = QuestionHandler()
         
-        self.handler.giveInput(input: "start", forNode: nil)
+        let node = self.handler.giveInput(input: "start", forNode: nil).nodes
         print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
-        let node = self.handler.getCurrentQuestion().node
         self.currentQuestion = (node, handler.getCurrentQuestion().question)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         cellViews = []
-        
-//
-//        handler.giveInput(input: "yes", forNode: nil)
-//        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
-//        
-//        handler.giveInput(input: "no", forNode: nil)
-//        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
-//        
-//        handler.giveInput(input: "8", forNode: nil)
-//        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
-//        
-//        handler.giveInput(input: "yes", forNode: (handler.currentQuestion as! LogicNode).firstN)
-//        print(handler.getCurrentQuestion().question + " " + handler.getCurrentQuestion().node!.QID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,6 +39,10 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setupDetailView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        //self.setupDetailView()
     }
     
     func setupDetailView() {
@@ -83,26 +75,25 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             default:
                 break
             }
-            self.tableView.reloadData()
+            self.updateTableView()
         }
     }
     
     func discreteQuestionViewDidPressButton(sender: UIButton, pressed: Int) {
+        var node:Node?
         if pressed == 0 || pressed == 1 {
-            self.handler.giveInput(input: "yes", forNode: nil)
+            node = self.handler.giveInput(input: "yes", forNode: nil).nodes
         }
         else {
-            self.handler.giveInput(input: "no", forNode: nil)
+            node = self.handler.giveInput(input: "no", forNode: nil).nodes
         }
-        let node = self.handler.getCurrentQuestion().node
         self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
         self.setupDetailView()
     }
     
     func rangeQuestionViewDidPressButton(value: String) {
         print("here")
-        self.handler.giveInput(input: value, forNode: nil)
-        let node = self.handler.getCurrentQuestion().node
+        let node = self.handler.giveInput(input: value, forNode: nil).nodes
         self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
         self.setupDetailView()
     }
@@ -119,6 +110,32 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
+    }
+    
+    func updateContentInsetForTableView(tableView:UITableView, animated:Bool) {
+        let lastRow = self.tableView.numberOfRows(inSection: 0)
+        let lastIndex = lastRow > 0 ? lastRow - 1 : 0
+        let lastIndexPath = IndexPath(item: lastIndex, section: 0)
+        let lastCellFrame = self.tableView.rectForRow(at: lastIndexPath)
+        let topInset = max(self.tableView.frame.height - lastCellFrame.origin.y - lastCellFrame.height, 0)
+        var contentInset = tableView.contentInset
+        contentInset.top = topInset
+        let options = UIViewAnimationOptions.beginFromCurrentState
+        UIView.animate(withDuration: animated ? 0.25 : 0, delay: 0, options: options, animations: {() in
+            self.markerViewHeightConstraint.constant = abs(topInset)
+            tableView.contentInset = contentInset
+            self.markerView.setNeedsLayout()
+            self.markerView.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func updateTableView() {
+        let indexPath = IndexPath(item: (self.cellViews.count - 1), section: 0)
+        self.tableView.beginUpdates()
+        self.tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        self.tableView.endUpdates()
+        self.updateContentInsetForTableView(tableView: self.tableView, animated: true)
+        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
     }
 }
 

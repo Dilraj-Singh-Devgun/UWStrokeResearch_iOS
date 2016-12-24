@@ -17,14 +17,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="471" height="463"/>
+            <rect key="frame" x="0.0" y="0.0" width="532" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3p-Zy-Xxo">
-                    <rect key="frame" x="-0.5" y="0.0" width="471" height="162"/>
+                    <rect key="frame" x="0.0" y="0.0" width="532" height="70.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ii4-Om-CdQ">
-                            <rect key="frame" x="0.0" y="0.5" width="471" height="162"/>
+                            <rect key="frame" x="0.0" y="0.5" width="532" height="70.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -39,16 +39,16 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ABb-ZZ-XdM">
-                    <rect key="frame" x="-0.5" y="162.5" width="471" height="300.5"/>
+                    <rect key="frame" x="0.0" y="71" width="532" height="129"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FVw-IA-sU5">
-                            <rect key="frame" x="24" y="126" width="424" height="48"/>
+                            <rect key="frame" x="27" y="13.5" width="479" height="42"/>
                             <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0g-ga-Y8a">
-                            <rect key="frame" x="218" y="210" width="35" height="30"/>
+                            <rect key="frame" x="248.5" y="91.5" width="35" height="30"/>
                             <state key="normal" title="done"/>
                             <connections>
                                 <action selector="doneButtonPressed:" destination="-1" eventType="touchUpInside" id="hbI-b4-fqo"/>
@@ -61,7 +61,7 @@
                         <constraint firstItem="U0g-ga-Y8a" firstAttribute="centerX" secondItem="ABb-ZZ-XdM" secondAttribute="centerX" id="Joh-o5-6fl"/>
                         <constraint firstItem="FVw-IA-sU5" firstAttribute="centerX" secondItem="ABb-ZZ-XdM" secondAttribute="centerX" id="UGH-Sv-IcX"/>
                         <constraint firstItem="U0g-ga-Y8a" firstAttribute="top" secondItem="FVw-IA-sU5" secondAttribute="bottom" constant="36" id="jwI-lR-c4U"/>
-                        <constraint firstItem="FVw-IA-sU5" firstAttribute="centerY" secondItem="ABb-ZZ-XdM" secondAttribute="centerY" id="tOj-N8-xuO"/>
+                        <constraint firstItem="FVw-IA-sU5" firstAttribute="centerY" secondItem="ABb-ZZ-XdM" secondAttribute="centerY" constant="-30" id="tOj-N8-xuO"/>
                     </constraints>
                 </view>
             </subviews>
@@ -82,7 +82,7 @@
             <connections>
                 <outletCollection property="gestureRecognizers" destination="KBK-Rl-WVY" appends="YES" id="aG3-qM-esN"/>
             </connections>
-            <point key="canvasLocation" x="81.5" y="156.5"/>
+            <point key="canvasLocation" x="112" y="25.5"/>
         </view>
         <tapGestureRecognizer id="KBK-Rl-WVY">
             <connections>
