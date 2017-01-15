@@ -48,6 +48,7 @@
                         <outlet property="markerView" destination="LfW-HJ-wT9" id="WA4-Cu-4kR"/>
                         <outlet property="markerViewHeightConstraint" destination="n2U-Ow-ymw" id="PR5-Zz-Yiv"/>
                         <outlet property="tableView" destination="GYw-Pe-cDo" id="vU9-yW-eWH"/>
+                        <outlet property="tableViewTopLayoutConstraint" destination="uue-Ix-ctl" id="tK3-4d-YXq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

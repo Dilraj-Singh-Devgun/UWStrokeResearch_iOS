@@ -46,6 +46,10 @@
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                            <connections>
+                                <action selector="textViewDidBeginEditing:" destination="-1" eventType="editingDidBegin" id="E3I-ix-FK8"/>
+                                <action selector="textViewDidEndEditing:" destination="-1" eventType="editingDidEnd" id="XF3-wf-EBP"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0g-ga-Y8a">
                             <rect key="frame" x="53" y="82.5" width="426" height="30"/>

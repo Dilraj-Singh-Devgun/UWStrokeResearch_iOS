@@ -14,6 +14,9 @@ import UIKit
 // delegate protocol to send a notification that a range has been entered.
 protocol RangeQuestionViewDelegate {
     func rangeQuestionViewDidPressButton(value:String)
+    func rangeQestionViewTappedInactive(sender:RangeQuestionView)
+    func rangeTextViewDidBeginEditing(sender:Any)
+    func rangeTextViewDidEndEditing(sender:Any)
 }
 
 class RangeQuestionView: UIView {
@@ -21,6 +24,7 @@ class RangeQuestionView: UIView {
     @IBOutlet weak var QuestionLabel: UILabel! // the question label
     @IBOutlet weak var inputTextField: UITextField! // the input field
     var delegate:RangeQuestionViewDelegate? // an optional delegate for the range question view
+    var coverView:UIView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,16 +81,67 @@ class RangeQuestionView: UIView {
         self.inputTextField.resignFirstResponder()
         if let _ = self.delegate {
             self.delegate!.rangeQuestionViewDidPressButton(value: self.inputTextField.text!)
+            self.delegate!.rangeTextViewDidEndEditing(sender: sender)
         }
     }
     
     //if we tap outside the textfield then resign the first responder
     @IBAction func tappedOutside(_ sender: Any) {
         self.inputTextField.resignFirstResponder()
+        if let _ = self.delegate {
+            self.delegate?.rangeTextViewDidEndEditing(sender: sender)
+        }
+        
     }
     
     //set the question of the uilabel 
     func setQuestion(question:String) {
         self.QuestionLabel.text = question
+    }
+    
+    //Makes the view inactive by placing a faded view ontop to act as a cover and then blocks any interaction with the controls in the view
+    func setInactive() {
+        if let _ = self.coverView {
+            return
+        }
+        //make the cover view with a white background and a transparancy to act as a faded vie
+        self.coverView = UIView(frame: self.bounds)
+        self.coverView!.backgroundColor = UIColor.white
+        self.coverView!.alpha = 0.8
+        self.addSubview(coverView!)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(DiscreteQuestionView.didTapOldView))
+        coverView!.addGestureRecognizer(tap)
+    }
+    
+    func didTapOldView(){
+        if let _ = self.delegate {
+            self.delegate?.rangeQestionViewTappedInactive(sender: self)
+        }
+    }
+    @IBAction func textViewDidBeginEditing(_ sender: Any) {
+        if let _ = self.delegate {
+            self.delegate?.rangeTextViewDidBeginEditing(sender: sender)
+        }
+    }
+    
+    @IBAction func textViewDidEndEditing(_ sender: Any) {
+        if let _ = self.delegate {
+            self.delegate?.rangeTextViewDidEndEditing(sender: sender)
+        }
+    }
+    
+    //make the view active and interactive again by removing the cover view and making all the buttons visable again
+    func setActive(){
+        if let cv = self.coverView {
+            cv.removeFromSuperview()
+            self.coverView = nil
+        }
+        
+        let v1 = viewWithTag(1)
+        let v2 = viewWithTag(2)
+        let v3 = viewWithTag(3)
+        v1?.alpha = 1
+        v2?.alpha = 1
+        v3?.alpha = 1
     }
 }

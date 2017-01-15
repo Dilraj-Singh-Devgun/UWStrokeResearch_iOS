@@ -9,13 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
-    
+
     var handler:QuestionHandler! // the question node handler which traverses our tree
     var currentQuestion:(node: Node?, message:String)! // a tuple which holds the current node and question
     @IBOutlet weak var tableView: UITableView! // the tableview which will display all the question
     var cellViews:[UIView]! //All the question views which have been asked in the table view; includes the current question.
     @IBOutlet weak var markerView: UIView! // the padding at the top of the table view which will allow us to aact as if we are adding views from the bottom up
     @IBOutlet weak var markerViewHeightConstraint: NSLayoutConstraint! // the constraint which controls the height of the marker view which we animate
+    @IBOutlet weak var tableViewTopLayoutConstraint: NSLayoutConstraint!
     
 
 // MARK: ViewController setup and UIViewController overridden methods
@@ -113,7 +114,33 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         print("here")
         let node = self.handler.giveInput(input: value, forNode: nil).nodes
         self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
+        let currView = self.cellViews.last
+        (currView as! RangeQuestionView).setInactive()
         self.setupDetailView()
+    }
+    
+    func rangeQestionViewTappedInactive(sender: RangeQuestionView) {
+        //scroll to index
+        //remove old view
+        //make active
+    }
+    
+    //When the keyboard drops we can move the tableview back to its original position
+    func rangeTextViewDidEndEditing(sender: Any) {
+        UIView.animate(withDuration: 0.3, animations: {() in
+            self.tableViewTopLayoutConstraint.constant = 0;
+            self.tableView.setNeedsLayout()
+            self.tableView.layoutIfNeeded()
+        })
+    }
+    
+    //Move tableview up when there is a keyboard so the user can see the button and all of the field
+    func rangeTextViewDidBeginEditing(sender: Any) {
+        UIView.animate(withDuration: 0.3, animations: {() in
+            self.tableViewTopLayoutConstraint.constant = -90;
+            self.tableView.setNeedsLayout()
+            self.tableView.layoutIfNeeded()
+        })
     }
 
 // MARK: UITableViewDelegate and UITableViewDataSource Methods
@@ -171,6 +198,14 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
     }
     
+    func updateTableViewDeletion() {
+        self.updateContentInsetForTableView(tableView: self.tableView, animated: true)
+        self.tableView.reloadData()
+        let indexPath = IndexPath(item: self.cellViews.count - 1, section: 0)
+        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+    }
+    
+    
 // MARK: UIScrollViewDelegate Methods
     
     //When the scrolling begins to slow we want to snap to the above cell
@@ -188,10 +223,8 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     //We find our displacement value by dividing the height by the height of our cells and then we move upward to it.
     func setContentOffset(scrollView: UIScrollView) {
-        let numOfItems = self.cellViews.count
-        let stopOver = scrollView.contentSize.height / CGFloat(numOfItems) // potentially: scrollView.contentSize.height / self.cellViews.last.frame.height
+        let stopOver = scrollView.contentSize.height / (self.cellViews.last?.frame.height)! //scrollView.contentSize.height / CGFloat(numOfItems) // potentially: scrollView.contentSize.height / self.cellViews.last.frame.height
         let y = round(scrollView.contentOffset.y / stopOver) * stopOver
-        
         guard y >= 0 && y <= scrollView.contentSize.height - scrollView.frame.height else {
             return
         }
