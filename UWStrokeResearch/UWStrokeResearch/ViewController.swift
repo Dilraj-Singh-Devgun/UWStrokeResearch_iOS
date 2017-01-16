@@ -198,10 +198,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     }
     
     func updateTableViewDeletion() {
-        print("call to update tablview")
         if self.cellViews.count > 1 {
-            print("we out here")
-            print("---------------------------")
             self.cellViews.removeLast()
             self.handler.goBackQuestion()
             let node = self.handler.currentQuestion
@@ -235,22 +232,17 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         if scrollView.panGestureRecognizer.velocity(in: scrollView).y > 800 {
             self.draggedUp = true
-            print("gotem")
         }
-        print("will begin decelerating")
         setContentOffset(scrollView: scrollView)
     }
 
     var draggedUp:Bool = false
     //When the user finishes dragging we also want to scroll to the cell above unless we have already been doing so with the deceleration methods
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
         draggedUp = true
         guard !decelerate else {
-            print("decelerating and ended dragging terminated")
             return
         }
-        print("decelerated and ended dragging")
         setContentOffset(scrollView: scrollView)
     }
     
@@ -269,7 +261,6 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     func handleDraggedUp() {
         if self.draggedUp {
-            print("dragged up")
             self.updateTableViewDeletion()
             draggedUp = false
         }
