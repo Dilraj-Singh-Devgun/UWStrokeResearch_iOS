@@ -111,7 +111,6 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     //When a range is entered we move the node based on the user's input and load the next question for the client
     func rangeQuestionViewDidPressButton(value: String) {
-        print("here")
         let node = self.handler.giveInput(input: value, forNode: nil).nodes
         self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
         let currView = self.cellViews.last
@@ -199,8 +198,8 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     }
     
     func updateTableViewDeletion() {
-        self.updateContentInsetForTableView(tableView: self.tableView, animated: true)
         self.tableView.reloadData()
+        self.updateContentInsetForTableView(tableView: self.tableView, animated: true)
         let indexPath = IndexPath(item: self.cellViews.count - 1, section: 0)
         self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
     }
@@ -211,14 +210,29 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     //When the scrolling begins to slow we want to snap to the above cell
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         setContentOffset(scrollView: scrollView)
+        print("hi")
     }
     
     //When the user finishes dragging we also want to scroll to the cell above unless we have already been doing so with the deceleration methods
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         guard !decelerate else {
+            if cellViews.count > 1 {
+                self.cellViews.removeLast()
+                self.handler.goBackQuestion()
+                let node = self.handler.currentQuestion
+                self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
+                self.updateTableViewDeletion()
+                if let v = self.cellViews.last as? RangeQuestionView {
+                    v.setActive()
+                }
+                else if let v = self.cellViews.last as? DiscreteQuestionView {
+                    v.setActive()
+                }
+            }
             return
         }
         setContentOffset(scrollView: scrollView)
+        print("hey")
     }
     
     //We find our displacement value by dividing the height by the height of our cells and then we move upward to it.
