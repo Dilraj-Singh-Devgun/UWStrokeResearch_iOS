@@ -79,6 +79,11 @@ class RangeQuestionView: UIView {
     //When the dont button is pressed notify the delegate
     @IBAction func doneButtonPressed(_ sender: Any) {
         self.inputTextField.resignFirstResponder()
+        if self.inputTextField.text == "" {
+            UIView.animate(withDuration: 0.3, animations: {() in self.inputTextField.backgroundColor = UIColor(red:255/255, green:94/255, blue:100/255, alpha:1) }, completion: {(success) in
+                UIView.animate(withDuration: 0.3, animations: {() in self.inputTextField.backgroundColor = UIColor.white }, completion: nil) })
+            return
+        }
         if let _ = self.delegate {
             self.delegate!.rangeQuestionViewDidPressButton(value: self.inputTextField.text!)
             self.delegate!.rangeTextViewDidEndEditing(sender: sender)

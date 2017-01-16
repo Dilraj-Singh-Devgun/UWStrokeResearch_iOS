@@ -198,10 +198,34 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     }
     
     func updateTableViewDeletion() {
-        self.tableView.reloadData()
-        self.updateContentInsetForTableView(tableView: self.tableView, animated: true)
-        let indexPath = IndexPath(item: self.cellViews.count - 1, section: 0)
-        self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+        print("call to update tablview")
+        if self.cellViews.count > 1 {
+            print("we out here")
+            print("---------------------------")
+            self.cellViews.removeLast()
+            self.handler.goBackQuestion()
+            let node = self.handler.currentQuestion
+            self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
+            if let v = self.cellViews.last as? RangeQuestionView {
+                v.setActive()
+            }
+            else if let v = self.cellViews.last as? DiscreteQuestionView {
+                v.setActive()
+            }
+            self.tableView.reloadData()
+            self.updateContentInsetForTableView(tableView: self.tableView, animated: true)
+            let indexPath = IndexPath(item: self.cellViews.count - 1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
+        }
+        else if self.cellViews.count == 1 {
+            if let v = self.cellViews.last as? RangeQuestionView {
+                v.setActive()
+            }
+            else if let v = self.cellViews.last as? DiscreteQuestionView {
+                v.setActive()
+            }
+        }
+        draggedUp = false
     }
     
     
@@ -209,39 +233,45 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     //When the scrolling begins to slow we want to snap to the above cell
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.panGestureRecognizer.velocity(in: scrollView).y > 800 {
+            self.draggedUp = true
+            print("gotem")
+        }
+        print("will begin decelerating")
         setContentOffset(scrollView: scrollView)
-        print("hi")
     }
-    
+
+    var draggedUp:Bool = false
     //When the user finishes dragging we also want to scroll to the cell above unless we have already been doing so with the deceleration methods
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        draggedUp = true
         guard !decelerate else {
-            if cellViews.count > 1 {
-                self.cellViews.removeLast()
-                self.handler.goBackQuestion()
-                let node = self.handler.currentQuestion
-                self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
-                self.updateTableViewDeletion()
-                if let v = self.cellViews.last as? RangeQuestionView {
-                    v.setActive()
-                }
-                else if let v = self.cellViews.last as? DiscreteQuestionView {
-                    v.setActive()
-                }
-            }
+            print("decelerating and ended dragging terminated")
             return
         }
+        print("decelerated and ended dragging")
         setContentOffset(scrollView: scrollView)
-        print("hey")
     }
+    
     
     //We find our displacement value by dividing the height by the height of our cells and then we move upward to it.
     func setContentOffset(scrollView: UIScrollView) {
         let stopOver = scrollView.contentSize.height / (self.cellViews.last?.frame.height)! //scrollView.contentSize.height / CGFloat(numOfItems) // potentially: scrollView.contentSize.height / self.cellViews.last.frame.height
         let y = round(scrollView.contentOffset.y / stopOver) * stopOver
         guard y >= 0 && y <= scrollView.contentSize.height - scrollView.frame.height else {
+            self.handleDraggedUp()
             return
         }
         scrollView.setContentOffset(CGPoint(x:scrollView.contentOffset.x, y:y), animated: true)
+        self.handleDraggedUp()
+    }
+    
+    func handleDraggedUp() {
+        if self.draggedUp {
+            print("dragged up")
+            self.updateTableViewDeletion()
+            draggedUp = false
+        }
     }
 }
