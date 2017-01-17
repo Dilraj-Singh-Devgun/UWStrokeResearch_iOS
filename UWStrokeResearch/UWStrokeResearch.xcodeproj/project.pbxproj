@@ -22,15 +22,18 @@
 		B40B05D91DEBAD61008AF173 /* RangeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05D81DEBAD61008AF173 /* RangeNode.swift */; };
 		B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */; };
 		B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */; };
+		B41BECD41E11A71100838CDA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BECD31E11A71100838CDA /* ResultsViewController.swift */; };
 		B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */; };
-		B4D2DF7C1E0B79C3000910F8 /* TestXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */; };
-		B4D2DF7E1E0B7A2E000910F8 /* TestXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */; };
 		B4D2DF811E0C7B8E000910F8 /* BaseQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D2DF801E0C7B8E000910F8 /* BaseQuestionView.xib */; };
 		B4D2DF831E0C846B000910F8 /* BaseQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */; };
-		B4D2DF891E0C92FD000910F8 /* RangeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF881E0C92FD000910F8 /* RangeInputView.swift */; };
 		B4D2DF8B1E0C9349000910F8 /* NodeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8A1E0C9349000910F8 /* NodeStack.swift */; };
 		B4D2DF8D1E0C9362000910F8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8C1E0C9362000910F8 /* SwiftyJSON.swift */; };
-		B4D2DF8F1E0C937D000910F8 /* DiscreteInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8E1E0C937D000910F8 /* DiscreteInputView.swift */; };
+		B4DE1B241E0CD03E008CAE67 /* DiscreteQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4DE1B231E0CD03E008CAE67 /* DiscreteQuestionView.xib */; };
+		B4DE1B261E0CD05D008CAE67 /* DiscreteQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */; };
+		B4DE1B281E0CD0E3008CAE67 /* RangeQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */; };
+		B4DE1B2A1E0CD0F8008CAE67 /* RangeQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE1B291E0CD0F8008CAE67 /* RangeQuestionView.swift */; };
+		B4F9D1741E2DAB3A00F2DAE0 /* LogicQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4F9D1731E2DAB3A00F2DAE0 /* LogicQuestionView.xib */; };
+		B4F9D1761E2DAB5300F2DAE0 /* LogicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F9D1751E2DAB5300F2DAE0 /* LogicQuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,15 +75,18 @@
 		B40B05D81DEBAD61008AF173 /* RangeNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeNode.swift; path = Model/RangeNode.swift; sourceTree = "<group>"; };
 		B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultNode.swift; path = Model/ResultNode.swift; sourceTree = "<group>"; };
 		B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteNode.swift; path = Model/DiscreteNode.swift; sourceTree = "<group>"; };
+		B41BECD31E11A71100838CDA /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionHandler.swift; path = Model/QuestionHandler.swift; sourceTree = "<group>"; };
-		B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestXib.xib; path = View/TestXib.xib; sourceTree = "<group>"; };
-		B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestXib.swift; path = View/TestXib.swift; sourceTree = "<group>"; };
 		B4D2DF801E0C7B8E000910F8 /* BaseQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BaseQuestionView.xib; path = View/BaseQuestionView.xib; sourceTree = "<group>"; };
 		B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseQuestionView.swift; path = View/BaseQuestionView.swift; sourceTree = "<group>"; };
-		B4D2DF881E0C92FD000910F8 /* RangeInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeInputView.swift; path = View/RangeInputView.swift; sourceTree = "<group>"; };
 		B4D2DF8A1E0C9349000910F8 /* NodeStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeStack.swift; path = Model/NodeStack.swift; sourceTree = "<group>"; };
 		B4D2DF8C1E0C9362000910F8 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Model/SwiftyJSON.swift; sourceTree = "<group>"; };
-		B4D2DF8E1E0C937D000910F8 /* DiscreteInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteInputView.swift; path = View/DiscreteInputView.swift; sourceTree = "<group>"; };
+		B4DE1B231E0CD03E008CAE67 /* DiscreteQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscreteQuestionView.xib; path = View/DiscreteQuestionView.xib; sourceTree = "<group>"; };
+		B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteQuestionView.swift; path = View/DiscreteQuestionView.swift; sourceTree = "<group>"; };
+		B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RangeQuestionView.xib; path = View/RangeQuestionView.xib; sourceTree = "<group>"; };
+		B4DE1B291E0CD0F8008CAE67 /* RangeQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeQuestionView.swift; path = View/RangeQuestionView.swift; sourceTree = "<group>"; };
+		B4F9D1731E2DAB3A00F2DAE0 /* LogicQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogicQuestionView.xib; path = View/LogicQuestionView.xib; sourceTree = "<group>"; };
+		B4F9D1751E2DAB5300F2DAE0 /* LogicQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogicQuestionView.swift; path = View/LogicQuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,10 +146,11 @@
 			isa = PBXGroup;
 			children = (
 				B4001E541DF38B4300237F5F /* Resources */,
-				B40B05D11DEBA4C1008AF173 /* Model */,
 				B40B05A31DEBA3DE008AF173 /* AppDelegate.swift */,
 				B40B05A51DEBA3DE008AF173 /* ViewController.swift */,
+				B41BECD31E11A71100838CDA /* ResultsViewController.swift */,
 				B40B05A71DEBA3DE008AF173 /* Main.storyboard */,
+				B40B05D11DEBA4C1008AF173 /* Model */,
 				B4D2DF7F1E0B8486000910F8 /* View */,
 				B40B05AA1DEBA3DE008AF173 /* Assets.xcassets */,
 				B40B05AC1DEBA3DE008AF173 /* LaunchScreen.storyboard */,
@@ -190,12 +197,14 @@
 		B4D2DF7F1E0B8486000910F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B4D2DF7B1E0B79C3000910F8 /* TestXib.xib */,
-				B4D2DF7D1E0B7A2E000910F8 /* TestXib.swift */,
 				B4D2DF801E0C7B8E000910F8 /* BaseQuestionView.xib */,
 				B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */,
-				B4D2DF8E1E0C937D000910F8 /* DiscreteInputView.swift */,
-				B4D2DF881E0C92FD000910F8 /* RangeInputView.swift */,
+				B4DE1B231E0CD03E008CAE67 /* DiscreteQuestionView.xib */,
+				B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */,
+				B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */,
+				B4DE1B291E0CD0F8008CAE67 /* RangeQuestionView.swift */,
+				B4F9D1731E2DAB3A00F2DAE0 /* LogicQuestionView.xib */,
+				B4F9D1751E2DAB5300F2DAE0 /* LogicQuestionView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -263,7 +272,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Dilraj Devgun";
 				TargetAttributes = {
 					B40B059F1DEBA3DE008AF173 = {
@@ -310,12 +319,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4D2DF7C1E0B79C3000910F8 /* TestXib.xib in Resources */,
+				B4DE1B281E0CD0E3008CAE67 /* RangeQuestionView.xib in Resources */,
+				B4DE1B241E0CD03E008CAE67 /* DiscreteQuestionView.xib in Resources */,
 				B40B05AE1DEBA3DE008AF173 /* LaunchScreen.storyboard in Resources */,
 				B40B05AB1DEBA3DE008AF173 /* Assets.xcassets in Resources */,
 				B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */,
 				B40B05A91DEBA3DE008AF173 /* Main.storyboard in Resources */,
 				B4D2DF811E0C7B8E000910F8 /* BaseQuestionView.xib in Resources */,
+				B4F9D1741E2DAB3A00F2DAE0 /* LogicQuestionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,14 +356,15 @@
 				B40B05D31DEBA4D7008AF173 /* Node.swift in Sources */,
 				B40B05D91DEBAD61008AF173 /* RangeNode.swift in Sources */,
 				B4D2DF8B1E0C9349000910F8 /* NodeStack.swift in Sources */,
-				B4D2DF7E1E0B7A2E000910F8 /* TestXib.swift in Sources */,
-				B4D2DF891E0C92FD000910F8 /* RangeInputView.swift in Sources */,
 				B40B05A61DEBA3DE008AF173 /* ViewController.swift in Sources */,
+				B41BECD41E11A71100838CDA /* ResultsViewController.swift in Sources */,
 				B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */,
-				B4D2DF8F1E0C937D000910F8 /* DiscreteInputView.swift in Sources */,
+				B4DE1B2A1E0CD0F8008CAE67 /* RangeQuestionView.swift in Sources */,
+				B4F9D1761E2DAB5300F2DAE0 /* LogicQuestionView.swift in Sources */,
 				B40B05D71DEBAAC5008AF173 /* LogicNode.swift in Sources */,
 				B40B05A41DEBA3DE008AF173 /* AppDelegate.swift in Sources */,
 				B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */,
+				B4DE1B261E0CD05D008CAE67 /* DiscreteQuestionView.swift in Sources */,
 				B4D2DF8D1E0C9362000910F8 /* SwiftyJSON.swift in Sources */,
 				B40B05D51DEBA74F008AF173 /* Range.swift in Sources */,
 				B4D2DF831E0C846B000910F8 /* BaseQuestionView.swift in Sources */,
@@ -428,6 +440,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -477,6 +490,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -512,6 +526,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dsd.UWStrokeResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -526,6 +541,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dsd.UWStrokeResearch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -5,13 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UWStrokeResearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="UWStrokeResearch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -19,12 +20,60 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GYw-Pe-cDo">
+                                <rect key="frame" x="0.0" y="20" width="375" height="500.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfW-HJ-wT9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="n2U-Ow-ymw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="LfW-HJ-wT9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Yz-0n-mMC"/>
+                            <constraint firstItem="GYw-Pe-cDo" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="2rB-Oy-gPQ"/>
+                            <constraint firstItem="LfW-HJ-wT9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CUc-py-lwn"/>
+                            <constraint firstItem="GYw-Pe-cDo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U89-su-OVJ"/>
+                            <constraint firstItem="GYw-Pe-cDo" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="fBe-71-b72"/>
+                            <constraint firstItem="LfW-HJ-wT9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="nxz-Uz-o81"/>
+                            <constraint firstItem="GYw-Pe-cDo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uue-Ix-ctl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="markerView" destination="LfW-HJ-wT9" id="WA4-Cu-4kR"/>
+                        <outlet property="markerViewHeightConstraint" destination="n2U-Ow-ymw" id="PR5-Zz-Yiv"/>
+                        <outlet property="tableView" destination="GYw-Pe-cDo" id="vU9-yW-eWH"/>
+                        <outlet property="tableViewTopLayoutConstraint" destination="uue-Ix-ctl" id="tK3-4d-YXq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
+        </scene>
+        <!--Results View Controller-->
+        <scene sceneID="tfT-kH-w9a">
+            <objects>
+                <viewController storyboardIdentifier="resultVC" id="gTA-dA-diQ" customClass="ResultsViewController" customModule="UWStrokeResearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="U4g-xI-rVb"/>
+                        <viewControllerLayoutGuide type="bottom" id="vxA-TN-aLt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XYY-VE-Ky3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qY3-5P-xte" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802" y="37"/>
         </scene>
     </scenes>
 </document>

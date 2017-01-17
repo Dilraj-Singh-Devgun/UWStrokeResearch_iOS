@@ -45,7 +45,7 @@ class Range:Hashable, Equatable{
     
     func isBetween(value:Int) -> Bool {
         if self.type == "RANGE" {
-            return (value > self.lowerBound && value < self.upperBound)
+            return (value >= self.lowerBound && value <= self.upperBound)
         }
         else if self.type == "EQUALS" {
             return (value >= self.lowerBound && value <= self.upperBound)

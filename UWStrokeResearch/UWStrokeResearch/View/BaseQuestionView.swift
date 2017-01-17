@@ -11,7 +11,6 @@ import UIKit
 @IBDesignable class BaseQuestionView: UIView {
     
     @IBOutlet weak var QuestionLabel: UILabel!
-    @IBOutlet weak var detailAnswerView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -57,5 +56,8 @@ import UIKit
         )
     }
     
+    func setQuestion(question:String) {
+        self.QuestionLabel.text = question
+    }
     
 }
