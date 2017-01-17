@@ -10,6 +10,8 @@ import UIKit
 
 class ResultsViewController: UIViewController {
 
+    var handler:QuestionHandler!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

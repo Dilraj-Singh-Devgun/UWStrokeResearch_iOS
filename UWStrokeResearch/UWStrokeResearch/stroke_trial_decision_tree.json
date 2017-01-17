@@ -94,7 +94,8 @@
 		"type": "BUTTON",
 		"question": "Not Done Yet.",
 		"options": [
-			{"type": "EQUAL", "value": "finish", "next": "r000"}
+			{"type": "EQUAL", "value": "yes", "next": "r000"},
+            {"type": "EQUAL", "value": "no", "next": "r000"}
 		]
 	},
 	"r000": {

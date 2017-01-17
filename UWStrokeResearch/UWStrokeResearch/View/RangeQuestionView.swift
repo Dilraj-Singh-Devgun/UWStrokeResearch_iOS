@@ -13,7 +13,7 @@ import UIKit
 
 // delegate protocol to send a notification that a range has been entered.
 protocol RangeQuestionViewDelegate {
-    func rangeQuestionViewDidPressButton(value:String)
+    func rangeQuestionViewDidPressButton(value:String, view:UIView)
     func rangeQestionViewTappedInactive(sender:RangeQuestionView)
     func rangeTextViewDidBeginEditing(sender:Any)
     func rangeTextViewDidEndEditing(sender:Any)
@@ -85,7 +85,7 @@ class RangeQuestionView: UIView {
             return
         }
         if let _ = self.delegate {
-            self.delegate!.rangeQuestionViewDidPressButton(value: self.inputTextField.text!)
+            self.delegate!.rangeQuestionViewDidPressButton(value: self.inputTextField.text!, view:self)
             self.delegate!.rangeTextViewDidEndEditing(sender: sender)
         }
     }

@@ -20,12 +20,12 @@
             <rect key="frame" x="0.0" y="0.0" width="490" height="362"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVN-FS-jdM">
-                    <rect key="frame" x="0.0" y="0.0" width="490" height="181"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVN-FS-jdM">
+                    <rect key="frame" x="0.0" y="0.0" width="490" height="143"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZi-Cy-1FF">
-                    <rect key="frame" x="0.0" y="181" width="490" height="181"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZi-Cy-1FF">
+                    <rect key="frame" x="0.0" y="219" width="490" height="143"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>

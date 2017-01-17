@@ -12,7 +12,7 @@ import UIKit
 
 // a protocol for which a delegate of the DiscreteQuestionView can conform to
 protocol DiscreteQuestionViewDelegate {
-    func discreteQuestionViewDidPressButton(sender:UIButton, pressed:Int)
+    func discreteQuestionViewDidPressButton(sender:UIButton, pressed:Int, view:UIView)
     func discreteQestionViewTappedInactive(sender:DiscreteQuestionView)
 }
 
@@ -96,7 +96,7 @@ class DiscreteQuestionView: UIView {
             break
         }
         if let _ = self.delegate {
-            delegate?.discreteQuestionViewDidPressButton(sender: sender, pressed: sender.tag)
+            delegate?.discreteQuestionViewDidPressButton(sender: sender, pressed: sender.tag, view:self)
         }
         
     }

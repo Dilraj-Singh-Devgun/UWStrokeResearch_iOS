@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
+class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, LogicQuestionViewDelegate {
 
     var handler:QuestionHandler! // the question node handler which traverses our tree
     var currentQuestion:(node: Node?, message:String)! // a tuple which holds the current node and question
@@ -45,6 +45,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     //sets up the next view to be put in the tableview based on the new node
     func setupDetailView() {
+        print(self.currentQuestion.node?.QID)
         if let _ = self.currentQuestion.node {
             var qv:UIView
             switch self.currentQuestion.node!.type {
@@ -64,12 +65,19 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
                 break
             case "OR":
                 //use the logic node fn and sn to decide which nodes it is
-                
+                qv = LogicQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 400))
+                let currentNode = self.currentQuestion.node! as! LogicNode
+                let subframe = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200)
+                (qv as! LogicQuestionView).setQuestions(node1: currentNode.firstN!, node2: currentNode.secondN!, frame: subframe)
+                (qv as! LogicQuestionView).delegate = self
+                self.cellViews.append(qv)
+                self.updateTableView()
                 //if the new node is an OR type then we make a LogicQuestionView which will make both question input views that are needed for it. Once made we update the table view to display all the cells and introduce the new question
                 break
             case "UNKNOWN":
                 //currently an unknown node goes to show that no known research is available
                 let rvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "resultVC")
+                (rvc as! ResultsViewController).handler = self.handler
                 self.present(rvc, animated: true, completion: nil)
                 break
             case "RESULT":
@@ -77,6 +85,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
                 //We need to send the data for the research over so it can be displayed.
                 let rvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "resultVC")
                 self.present(rvc, animated: true, completion: nil)
+                (rvc as! ResultsViewController).handler = self.handler
                 break
             default:
                 break
@@ -87,7 +96,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
 // MARK: DiscreteQuestionViewDelegate Methods
     
     //When a button in a discrete view question has been pressed we move the node and load a new view into the tableview
-    func discreteQuestionViewDidPressButton(sender: UIButton, pressed: Int) {
+    func discreteQuestionViewDidPressButton(sender: UIButton, pressed: Int, view:UIView) {
         var node:Node?
         if pressed == 1 || pressed == 2 {
             node = self.handler.giveInput(input: "yes", forNode: nil).nodes
@@ -110,7 +119,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
 // MARK: RangeQuestionViewDelegate Methods
     
     //When a range is entered we move the node based on the user's input and load the next question for the client
-    func rangeQuestionViewDidPressButton(value: String) {
+    func rangeQuestionViewDidPressButton(value: String, view:UIView) {
         let node = self.handler.giveInput(input: value, forNode: nil).nodes
         self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
         let currView = self.cellViews.last
@@ -126,21 +135,67 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     //When the keyboard drops we can move the tableview back to its original position
     func rangeTextViewDidEndEditing(sender: Any) {
-        UIView.animate(withDuration: 0.3, animations: {() in
-            self.tableViewTopLayoutConstraint.constant = 0;
-            self.tableView.setNeedsLayout()
-            self.tableView.layoutIfNeeded()
-        })
+        self.animateTableViewToDefaultPosition()
     }
     
     //Move tableview up when there is a keyboard so the user can see the button and all of the field
     func rangeTextViewDidBeginEditing(sender: Any) {
+        self.animateAboveTextField()
+    }
+    
+    func animateAboveTextField() {
         UIView.animate(withDuration: 0.3, animations: {() in
             self.tableViewTopLayoutConstraint.constant = -90;
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
         })
     }
+    
+    func animateTableViewToDefaultPosition() {
+        UIView.animate(withDuration: 0.5, animations: {() in
+            self.tableViewTopLayoutConstraint.constant = 0;
+            self.tableView.setNeedsLayout()
+            self.tableView.layoutIfNeeded()
+        })
+    }
+    
+// MARK: LogicQuestionViewNodeDelegate Methods 
+    func logicQuestoinViewStoppedEditing() {
+        self.animateTableViewToDefaultPosition()
+    }
+    
+    func logicQuestionViewBeganEditing() {
+        self.animateAboveTextField()
+    }
+    
+    func logicQuestionViewTappedInactive() {
+        //scroll to index
+        //remove old view
+        //make active
+    }
+    
+    func logicQuestionViewRangeAnswered(node: Node, value: String) {
+        let nextNode = self.handler.giveInput(input: value, forNode: node).nodes
+        self.currentQuestion = (nextNode, self.handler.getCurrentQuestion().question)
+        let currView = self.cellViews.last
+        (currView as! LogicQuestionView).setInactive()
+        self.setupDetailView()
+    }
+    
+    func logicQuestionViewDiscreteAnswered(node: Node, sender: UIButton, pressed: Int) {
+        var nextNode:Node?
+        if pressed == 1 || pressed == 2 {
+            nextNode = self.handler.giveInput(input: "yes", forNode: node).nodes
+        }
+        else {
+            nextNode = self.handler.giveInput(input: "no", forNode: node).nodes
+        }
+        self.currentQuestion = (nextNode, self.handler.getCurrentQuestion().question)
+        let currView = self.cellViews.last
+        (currView as! LogicQuestionView).setInactive()
+        self.setupDetailView()
+    }
+    
 
 // MARK: UITableViewDelegate and UITableViewDataSource Methods
     

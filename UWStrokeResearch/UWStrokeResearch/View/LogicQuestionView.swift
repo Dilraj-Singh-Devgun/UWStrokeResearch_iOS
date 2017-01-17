@@ -9,18 +9,25 @@
 import UIKit
 
 protocol LogicQuestionViewDelegate {
-
+    func logicQuestionViewTappedInactive()
+    func logicQuestionViewBeganEditing()
+    func logicQuestoinViewStoppedEditing()
+    func logicQuestionViewRangeAnswered(node:Node, value:String)
+    func logicQuestionViewDiscreteAnswered(node:Node, sender:UIButton, pressed:Int)
 }
 
 class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionViewDelegate{
 
     @IBOutlet weak var topQuestionView: UIView!
     @IBOutlet weak var bottomQuestionView: UIView!
+    var coverView:UIView?
     
     var questionNode1:Node?
     var questionNode2:Node?
     
+    
     var delegate:LogicQuestionViewDelegate?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,7 +77,7 @@ class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionView
         )
     }
     
-    func setQuestions(node1:Node, node2:Node) {
+    func setQuestions(node1:Node, node2:Node, frame:CGRect) {
         self.questionNode1 = node1
         self.questionNode2 = node2
         
@@ -83,13 +90,15 @@ class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionView
             
             switch node.type {
             case "BUTTON":
-                let qv = DiscreteQuestionView(frame: (subview?.bounds)!, question: node.question)
+                let qv = DiscreteQuestionView(frame: frame, question: node.question)
                 qv.delegate = self
+                qv.tag = i + 1
                 subview?.addSubview(qv)
                 break
             case "NUMBER":
-                let qv = RangeQuestionView(frame: (subview?.bounds)!, question: node.question)
+                let qv = RangeQuestionView(frame: frame, question: node.question)
                 qv.delegate = self
+                qv.tag = i + 1
                 subview?.addSubview(qv)
                 break
             default:
@@ -99,27 +108,70 @@ class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionView
     }
     
     func discreteQestionViewTappedInactive(sender: DiscreteQuestionView) {
-        
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewTappedInactive()
+        }
     }
     
-    func discreteQuestionViewDidPressButton(sender: UIButton, pressed: Int) {
-        
+    func discreteQuestionViewDidPressButton(sender: UIButton, pressed: Int, view:UIView) {
+        let num = view.tag - 1
+        self.setInactive()
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewDiscreteAnswered(node: num == 0 ? self.questionNode1! : self.questionNode2!, sender: sender, pressed: pressed)
+        }
     }
     
-    func rangeQuestionViewDidPressButton(value: String) {
+    func rangeQuestionViewDidPressButton(value: String, view:UIView) {
+        let num = view.tag - 1
+        self.setInactive()
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewRangeAnswered(node: num == 0 ? self.questionNode1! : self.questionNode2!, value: value)
+        }
         
     }
     
     func rangeTextViewDidEndEditing(sender: Any) {
-        
+        if let _ = self.delegate {
+            self.delegate?.logicQuestoinViewStoppedEditing()
+        }
     }
     
     func rangeTextViewDidBeginEditing(sender: Any) {
-        
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewBeganEditing()
+        }
     }
     
     func rangeQestionViewTappedInactive(sender: RangeQuestionView) {
-        
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewTappedInactive()
+        }
+    }
+    
+    func setInactive() {
+        if let _ = self.coverView {
+            return
+        }
+        //make the cover view with a white background and a transparancy to act as a faded vie
+        self.coverView = UIView(frame: self.bounds)
+        self.coverView!.backgroundColor = UIColor.white
+        self.coverView!.alpha = 0.8
+        self.addSubview(coverView!)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(DiscreteQuestionView.didTapOldView))
+        coverView!.addGestureRecognizer(tap)
     }
 
+    func setActive(){
+        if let cv = self.coverView {
+            cv.removeFromSuperview()
+            self.coverView = nil
+        }
+        
+        let v1 = viewWithTag(1)
+        let v2 = viewWithTag(2)
+        let v3 = viewWithTag(3)
+        v1?.alpha = 1
+        v2?.alpha = 1
+        v3?.alpha = 1
+    }
 }
