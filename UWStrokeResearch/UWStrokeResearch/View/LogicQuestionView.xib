@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11762"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogicQuestionView" customModule="UWStrokeResearch" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomQuestionView" destination="nZi-Cy-1FF" id="mmo-FV-YIs"/>
+                <outlet property="topQuestionView" destination="uVN-FS-jdM" id="MUz-iZ-85g"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="490" height="362"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVN-FS-jdM">
+                    <rect key="frame" x="0.0" y="0.0" width="490" height="181"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZi-Cy-1FF">
+                    <rect key="frame" x="0.0" y="181" width="490" height="181"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uVN-FS-jdM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="CjN-vZ-WRk"/>
+                <constraint firstAttribute="bottom" secondItem="nZi-Cy-1FF" secondAttribute="bottom" id="FjA-7c-Kpx"/>
+                <constraint firstItem="uVN-FS-jdM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hl5-X2-iyb"/>
+                <constraint firstItem="nZi-Cy-1FF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="KGY-Wt-ixq"/>
+                <constraint firstItem="uVN-FS-jdM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iNm-Jm-N1V"/>
+                <constraint firstItem="nZi-Cy-1FF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jUH-8m-hbC"/>
+                <constraint firstItem="nZi-Cy-1FF" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="nmz-Hp-Jlr"/>
+                <constraint firstItem="uVN-FS-jdM" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.5" id="pad-A2-n6a"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="91" y="206"/>
+        </view>
+    </objects>
+</document>

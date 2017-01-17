@@ -32,6 +32,8 @@
 		B4DE1B261E0CD05D008CAE67 /* DiscreteQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */; };
 		B4DE1B281E0CD0E3008CAE67 /* RangeQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */; };
 		B4DE1B2A1E0CD0F8008CAE67 /* RangeQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE1B291E0CD0F8008CAE67 /* RangeQuestionView.swift */; };
+		B4F9D1741E2DAB3A00F2DAE0 /* LogicQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4F9D1731E2DAB3A00F2DAE0 /* LogicQuestionView.xib */; };
+		B4F9D1761E2DAB5300F2DAE0 /* LogicQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F9D1751E2DAB5300F2DAE0 /* LogicQuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteQuestionView.swift; path = View/DiscreteQuestionView.swift; sourceTree = "<group>"; };
 		B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RangeQuestionView.xib; path = View/RangeQuestionView.xib; sourceTree = "<group>"; };
 		B4DE1B291E0CD0F8008CAE67 /* RangeQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeQuestionView.swift; path = View/RangeQuestionView.swift; sourceTree = "<group>"; };
+		B4F9D1731E2DAB3A00F2DAE0 /* LogicQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogicQuestionView.xib; path = View/LogicQuestionView.xib; sourceTree = "<group>"; };
+		B4F9D1751E2DAB5300F2DAE0 /* LogicQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogicQuestionView.swift; path = View/LogicQuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +203,8 @@
 				B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */,
 				B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */,
 				B4DE1B291E0CD0F8008CAE67 /* RangeQuestionView.swift */,
+				B4F9D1731E2DAB3A00F2DAE0 /* LogicQuestionView.xib */,
+				B4F9D1751E2DAB5300F2DAE0 /* LogicQuestionView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 				B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */,
 				B40B05A91DEBA3DE008AF173 /* Main.storyboard in Resources */,
 				B4D2DF811E0C7B8E000910F8 /* BaseQuestionView.xib in Resources */,
+				B4F9D1741E2DAB3A00F2DAE0 /* LogicQuestionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +360,7 @@
 				B41BECD41E11A71100838CDA /* ResultsViewController.swift in Sources */,
 				B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */,
 				B4DE1B2A1E0CD0F8008CAE67 /* RangeQuestionView.swift in Sources */,
+				B4F9D1761E2DAB5300F2DAE0 /* LogicQuestionView.swift in Sources */,
 				B40B05D71DEBAAC5008AF173 /* LogicNode.swift in Sources */,
 				B40B05A41DEBA3DE008AF173 /* AppDelegate.swift in Sources */,
 				B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */,

@@ -197,7 +197,9 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
     }
     
+    //Handles deleting the last element and moving the elements downwards
     func updateTableViewDeletion() {
+        //if there is more than one element then delete it go back an element and then update the tableview
         if self.cellViews.count > 1 {
             self.cellViews.removeLast()
             self.handler.goBackQuestion()
@@ -215,6 +217,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: true)
         }
         else if self.cellViews.count == 1 {
+            //Otherwise set the first question to be active again
             if let v = self.cellViews.last as? RangeQuestionView {
                 v.setActive()
             }
@@ -230,6 +233,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     //When the scrolling begins to slow we want to snap to the above cell
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        //If the user drags down then set it to true
         if scrollView.panGestureRecognizer.velocity(in: scrollView).y > 800 {
             self.draggedUp = true
         }
@@ -259,6 +263,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         self.handleDraggedUp()
     }
     
+    //
     func handleDraggedUp() {
         if self.draggedUp {
             self.updateTableViewDeletion()
