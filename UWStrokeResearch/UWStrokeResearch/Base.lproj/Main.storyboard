@@ -122,6 +122,7 @@
                     <connections>
                         <outlet property="markerView" destination="LfW-HJ-wT9" id="WA4-Cu-4kR"/>
                         <outlet property="markerViewHeightConstraint" destination="n2U-Ow-ymw" id="PR5-Zz-Yiv"/>
+                        <outlet property="markerViewTopLayoutConstraint" destination="CUc-py-lwn" id="cIH-EY-gtr"/>
                         <outlet property="tableView" destination="GYw-Pe-cDo" id="vU9-yW-eWH"/>
                         <outlet property="tableViewTopLayoutConstraint" destination="uue-Ix-ctl" id="tK3-4d-YXq"/>
                     </connections>
@@ -142,36 +143,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpt-il-7PB">
-                                <rect key="frame" x="16" y="28" width="80" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Main Menu"/>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="t28-YA-CgK">
-                                <rect key="frame" x="0.0" y="70" width="375" height="267"/>
+                                <rect key="frame" x="0.0" y="80" width="375" height="267"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="answerCell" id="dsw-te-4Lq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="answerCell" id="dsw-te-4Lq" customClass="AnswerTableViewCell" customModule="UWStrokeResearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dsw-te-4Lq" id="3in-hz-MHM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6N-gj-eOG">
+                                                    <rect key="frame" x="16" y="11" width="66.5" height="21.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSS-JU-MAo">
+                                                    <rect key="frame" x="302" y="11" width="57" height="22"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pSS-JU-MAo" firstAttribute="centerY" secondItem="3in-hz-MHM" secondAttribute="centerY" id="fRF-he-xGY"/>
+                                                <constraint firstItem="M6N-gj-eOG" firstAttribute="centerY" secondItem="3in-hz-MHM" secondAttribute="centerY" id="giI-qf-7Jl"/>
+                                                <constraint firstItem="M6N-gj-eOG" firstAttribute="leading" secondItem="3in-hz-MHM" secondAttribute="leadingMargin" constant="8" id="hnM-Aa-z0Q"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="pSS-JU-MAo" secondAttribute="trailing" constant="8" id="zjx-R0-qPx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="answerLabel" destination="pSS-JU-MAo" id="M8w-ba-Adr"/>
+                                            <outlet property="questionLabel" destination="M6N-gj-eOG" id="47U-LK-ORf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rpt-il-7PB">
+                                <rect key="frame" x="16" y="28" width="80" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Main Menu"/>
+                                <connections>
+                                    <action selector="mainMenuButtonPrssed:" destination="gTA-dA-diQ" eventType="touchUpInside" id="IVt-Xh-3xf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sg-7e-Khg">
+                                <rect key="frame" x="159" y="33" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="t28-YA-CgK" firstAttribute="top" secondItem="Rpt-il-7PB" secondAttribute="bottom" constant="10" id="1fa-fR-BvL"/>
+                            <constraint firstItem="t28-YA-CgK" firstAttribute="top" secondItem="Rpt-il-7PB" secondAttribute="bottom" constant="20" id="1fa-fR-BvL"/>
+                            <constraint firstItem="7Sg-7e-Khg" firstAttribute="centerY" secondItem="Rpt-il-7PB" secondAttribute="centerY" id="5od-Jv-MTX"/>
                             <constraint firstItem="Rpt-il-7PB" firstAttribute="top" secondItem="U4g-xI-rVb" secondAttribute="bottom" constant="8" id="7Of-7k-MxY"/>
                             <constraint firstItem="t28-YA-CgK" firstAttribute="centerX" secondItem="XYY-VE-Ky3" secondAttribute="centerX" id="Axj-RL-MF6"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Rpt-il-7PB" secondAttribute="leading" id="GB9-I5-OBb"/>
                             <constraint firstItem="t28-YA-CgK" firstAttribute="height" secondItem="XYY-VE-Ky3" secondAttribute="height" multiplier="0.4" id="UL6-NM-erz"/>
+                            <constraint firstItem="7Sg-7e-Khg" firstAttribute="centerX" secondItem="XYY-VE-Ky3" secondAttribute="centerX" id="f5m-0a-ZXK"/>
                             <constraint firstItem="t28-YA-CgK" firstAttribute="width" secondItem="XYY-VE-Ky3" secondAttribute="width" id="kNJ-Bg-fxK"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="answerTableView" destination="t28-YA-CgK" id="W9o-3f-nbW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qY3-5P-xte" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

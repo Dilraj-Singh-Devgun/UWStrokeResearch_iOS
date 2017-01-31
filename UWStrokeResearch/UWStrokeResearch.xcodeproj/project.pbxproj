@@ -23,6 +23,8 @@
 		B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */; };
 		B40B05DD1DEBB5FB008AF173 /* DiscreteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */; };
 		B40FE0121E40519400784203 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40FE0111E40519400784203 /* HistoryList.swift */; };
+		B40FE0141E405B6100784203 /* decision_tree.json in Resources */ = {isa = PBXBuildFile; fileRef = B40FE0131E405B6100784203 /* decision_tree.json */; };
+		B40FE0161E405FD800784203 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40FE0151E405FD800784203 /* AnswerTableViewCell.swift */; };
 		B41BECD41E11A71100838CDA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41BECD31E11A71100838CDA /* ResultsViewController.swift */; };
 		B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */; };
 		B4AD116F1E403FD000CCEDA0 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AD116E1E403FD000CCEDA0 /* StartScreenViewController.swift */; };
@@ -78,6 +80,8 @@
 		B40B05DA1DEBB4AB008AF173 /* ResultNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResultNode.swift; path = Model/ResultNode.swift; sourceTree = "<group>"; };
 		B40B05DC1DEBB5FB008AF173 /* DiscreteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteNode.swift; path = Model/DiscreteNode.swift; sourceTree = "<group>"; };
 		B40FE0111E40519400784203 /* HistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryList.swift; path = Model/HistoryList.swift; sourceTree = "<group>"; };
+		B40FE0131E405B6100784203 /* decision_tree.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = decision_tree.json; sourceTree = "<group>"; };
+		B40FE0151E405FD800784203 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnswerTableViewCell.swift; path = View/AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		B41BECD31E11A71100838CDA /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		B4328B3F1DF3DC9000072B6F /* QuestionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionHandler.swift; path = Model/QuestionHandler.swift; sourceTree = "<group>"; };
 		B4AD116E1E403FD000CCEDA0 /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 		B4001E541DF38B4300237F5F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B40FE0131E405B6100784203 /* decision_tree.json */,
 				B4001E521DF38B3800237F5F /* stroke_trial_decision_tree.json */,
 			);
 			name = Resources;
@@ -211,6 +216,7 @@
 				B4DE1B291E0CD0F8008CAE67 /* RangeQuestionView.swift */,
 				B4F9D1731E2DAB3A00F2DAE0 /* LogicQuestionView.xib */,
 				B4F9D1751E2DAB5300F2DAE0 /* LogicQuestionView.swift */,
+				B40FE0151E405FD800784203 /* AnswerTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -333,6 +339,7 @@
 				B40B05A91DEBA3DE008AF173 /* Main.storyboard in Resources */,
 				B4D2DF811E0C7B8E000910F8 /* BaseQuestionView.xib in Resources */,
 				B4F9D1741E2DAB3A00F2DAE0 /* LogicQuestionView.xib in Resources */,
+				B40FE0141E405B6100784203 /* decision_tree.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +367,7 @@
 				B4001E581DF38DA500237F5F /* JSONParser.swift in Sources */,
 				B4328B401DF3DC9000072B6F /* QuestionHandler.swift in Sources */,
 				B40B05D31DEBA4D7008AF173 /* Node.swift in Sources */,
+				B40FE0161E405FD800784203 /* AnswerTableViewCell.swift in Sources */,
 				B4AD116F1E403FD000CCEDA0 /* StartScreenViewController.swift in Sources */,
 				B40B05D91DEBAD61008AF173 /* RangeNode.swift in Sources */,
 				B4D2DF8B1E0C9349000910F8 /* NodeStack.swift in Sources */,

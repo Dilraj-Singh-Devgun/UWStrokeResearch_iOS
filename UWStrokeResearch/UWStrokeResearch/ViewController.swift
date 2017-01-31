@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, LogicQuestionViewDelegate {
+class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, LogicQuestionViewDelegate, ResultsViewControllerDelegate {
 
     var handler:QuestionHandler! // the question node handler which traverses our tree
     var currentQuestion:(node: Node?, message:String)! // a tuple which holds the current node and question
@@ -18,7 +18,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     @IBOutlet weak var markerViewHeightConstraint: NSLayoutConstraint! // the constraint which controls the height of the marker view which we animate
     @IBOutlet weak var tableViewTopLayoutConstraint: NSLayoutConstraint!
     var firstLoad:Bool = true
-    
+    @IBOutlet weak var markerViewTopLayoutConstraint: NSLayoutConstraint!
 
 // MARK: ViewController setup and UIViewController overridden methods
 
@@ -80,6 +80,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             case "UNKNOWN":
                 //currently an unknown node goes to show that no known research is available
                 let rvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "resultVC")
+                (rvc as! ResultsViewController).delegate = self
                 (rvc as! ResultsViewController).handler = self.handler
                 self.present(rvc, animated: true, completion: nil)
                 break
@@ -88,12 +89,20 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
                 //We need to send the data for the research over so it can be displayed.
                 let rvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "resultVC")
                 self.present(rvc, animated: true, completion: nil)
+                (rvc as! ResultsViewController).delegate = self
                 (rvc as! ResultsViewController).handler = self.handler
                 break
             default:
                 break
             }
         }
+    }
+    
+    
+// MARK: ResultsViewControllerDelegate Methods 
+    func didGoBackToMainMenu() {
+        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 // MARK: DiscreteQuestionViewDelegate Methods
@@ -148,7 +157,10 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     func animateAboveTextField() {
         UIView.animate(withDuration: 0.3, animations: {() in
-            self.tableViewTopLayoutConstraint.constant = -90;
+            self.tableViewTopLayoutConstraint.constant = -130;
+            self.markerViewTopLayoutConstraint.constant = -130
+            self.markerView.setNeedsLayout()
+            self.markerView.layoutIfNeeded()
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
         })
@@ -157,6 +169,9 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     func animateTableViewToDefaultPosition() {
         UIView.animate(withDuration: 0.5, animations: {() in
             self.tableViewTopLayoutConstraint.constant = 0;
+            self.markerViewTopLayoutConstraint.constant = 0
+            self.markerView.setNeedsLayout()
+            self.markerView.layoutIfNeeded()
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
         })
