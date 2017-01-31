@@ -74,6 +74,8 @@ class RangeQuestionView: UIView {
                 metrics: nil, views: ["v":viewFromNib]
             )
         )
+        self.inputTextField.becomeFirstResponder()
+        self.textViewDidEndEditing(self.inputTextField)
     }
     
     //When the dont button is pressed notify the delegate

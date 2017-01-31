@@ -17,6 +17,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     @IBOutlet weak var markerView: UIView! // the padding at the top of the table view which will allow us to aact as if we are adding views from the bottom up
     @IBOutlet weak var markerViewHeightConstraint: NSLayoutConstraint! // the constraint which controls the height of the marker view which we animate
     @IBOutlet weak var tableViewTopLayoutConstraint: NSLayoutConstraint!
+    var firstLoad:Bool = true
     
 
 // MARK: ViewController setup and UIViewController overridden methods
@@ -40,12 +41,14 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.setupDetailView()
+        if firstLoad == true {
+            self.setupDetailView()
+        }
+        self.firstLoad = false
     }
     
     //sets up the next view to be put in the tableview based on the new node
     func setupDetailView() {
-        print(self.currentQuestion.node?.QID)
         if let _ = self.currentQuestion.node {
             var qv:UIView
             switch self.currentQuestion.node!.type {

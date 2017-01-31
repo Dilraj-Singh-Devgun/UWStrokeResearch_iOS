@@ -12,11 +12,13 @@ public class QuestionHandler {
     var currentQuestion:Node?
     var history:NodeStack!
     var parser:JSONParser!
+    var answerHistory:HistoryList!
     
     init() {
         //initialize the stack, json parser, and the root node
         self.history = NodeStack()
         self.parser = JSONParser()
+        self.answerHistory = HistoryList()
         self.currentQuestion = parser.getNodeTree()
     }
     
@@ -46,10 +48,12 @@ public class QuestionHandler {
         let lastQuestion = history.pop()
         //sets the current question to the previous question
         self.currentQuestion = lastQuestion
+        self.answerHistory.removeLast()
     }
     
     //If current node is an OR node we must have a node passed in that will be the node that the input is for
     func giveInput(input:String, forNode:Node?) -> (nodes: Node?, message: String) {
+        self.answerHistory.add((self.currentQuestion!, input))
         //switch based on the current question type
         switch (self.currentQuestion?.type)! {
         case "NUMBER":
