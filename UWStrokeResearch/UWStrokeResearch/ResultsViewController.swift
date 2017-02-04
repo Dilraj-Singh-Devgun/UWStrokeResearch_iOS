@@ -14,6 +14,9 @@ protocol ResultsViewControllerDelegate {
 
 class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var researcherNameLabel: UILabel!
+    @IBOutlet weak var researchTrialLabel: UILabel!
     @IBOutlet weak var answerTableView: UITableView!
     var handler:QuestionHandler!
     var delegate:ResultsViewControllerDelegate?
@@ -23,8 +26,7 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         self.answerTableView.delegate = self
         self.answerTableView.dataSource = self
-        self.history = self.handler.answerHistory.getItems()
-        self.history.remove(at: 0)
+        self.setLabelText()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +41,25 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let _ = self.delegate {
             self.delegate?.didGoBackToMainMenu()
         }
+    }
+    
+    func setValuesPerformSetup(){
+        self.history = self.handler.answerHistory.getItems()
+        self.history.remove(at: 0)
+    }
+    
+    func setLabelText() {
+        let currNode = self.handler.currentQuestion
+        if currNode?.type == "UNKNOWN" {
+            return
+        }
+        self.phoneNumberLabel.adjustsFontSizeToFitWidth = true
+        self.researcherNameLabel.adjustsFontSizeToFitWidth = true
+        self.researchTrialLabel.adjustsFontSizeToFitWidth = true
+        
+        self.phoneNumberLabel.text = (currNode as! ResultNode).phone
+        self.researcherNameLabel.text = (currNode as! ResultNode).researcher
+        self.researchTrialLabel.text = currNode?.question
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

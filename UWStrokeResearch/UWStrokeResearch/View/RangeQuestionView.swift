@@ -17,6 +17,7 @@ protocol RangeQuestionViewDelegate {
     func rangeQestionViewTappedInactive(sender:RangeQuestionView)
     func rangeTextViewDidBeginEditing(sender:Any)
     func rangeTextViewDidEndEditing(sender:Any)
+    func rangeQuestionViewNeedsAlert(sender:Any, alert:UIAlertController)
 }
 
 class RangeQuestionView: UIView {
@@ -74,8 +75,6 @@ class RangeQuestionView: UIView {
                 metrics: nil, views: ["v":viewFromNib]
             )
         )
-        self.inputTextField.becomeFirstResponder()
-        self.textViewDidEndEditing(self.inputTextField)
     }
     
     //When the dont button is pressed notify the delegate
@@ -87,8 +86,18 @@ class RangeQuestionView: UIView {
             return
         }
         if let _ = self.delegate {
-            self.delegate!.rangeQuestionViewDidPressButton(value: self.inputTextField.text!, view:self)
-            self.delegate!.rangeTextViewDidEndEditing(sender: sender)
+            let txt = self.inputTextField.text!
+            if Int(txt) != nil {
+                self.delegate!.rangeQuestionViewDidPressButton(value: self.inputTextField.text!, view:self)
+                self.delegate!.rangeTextViewDidEndEditing(sender: sender)
+            }
+            else {
+                self.inputTextField.text = ""
+                let alert = UIAlertController(title: "Invalid Input", message: "Please enter a numeric value", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+                self.delegate!.rangeQuestionViewNeedsAlert(sender: self, alert: alert)
+            }
+            
         }
     }
     
@@ -125,6 +134,12 @@ class RangeQuestionView: UIView {
             self.delegate?.rangeQestionViewTappedInactive(sender: self)
         }
     }
+    
+    func makeTextFieldFirstResponder() {
+        self.inputTextField.becomeFirstResponder()
+        //self.textViewDidBeginEditing(self.inputTextField)
+    }
+    
     @IBAction func textViewDidBeginEditing(_ sender: Any) {
         if let _ = self.delegate {
             self.delegate?.rangeTextViewDidBeginEditing(sender: sender)

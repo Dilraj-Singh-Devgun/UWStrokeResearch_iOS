@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, LogicQuestionViewDelegate, ResultsViewControllerDelegate {
+class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, LogicQuestionViewDelegate, ResultsViewControllerDelegate, ModularButtonViewDeleate {
 
     var handler:QuestionHandler! // the question node handler which traverses our tree
     var currentQuestion:(node: Node?, message:String)! // a tuple which holds the current node and question
@@ -54,8 +54,16 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             switch self.currentQuestion.node!.type {
             case "BUTTON":
                 //if the new node is a button type then we make a DiscreteQuestionView with the delegate set to self. Once made we update the table view to display all the cells and introduce the new question
-                qv = DiscreteQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
-                (qv as! DiscreteQuestionView).delegate = self
+                qv = ModularButtonView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
+                let options = (self.currentQuestion.node! as! DiscreteNode).nodeConnections
+                var bttnOptions:[String] = []
+                for (value, _) in options! {
+                    bttnOptions.append(value)
+                }
+                (qv as! ModularButtonView).setButtons(buttons: bttnOptions, width: self.view.frame.width)
+                (qv as! ModularButtonView).delegate = self
+//                qv = DiscreteQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
+//                (qv as! DiscreteQuestionView).delegate = self
                 self.cellViews.append(qv)
                 self.updateTableView()
                 break
@@ -80,17 +88,19 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             case "UNKNOWN":
                 //currently an unknown node goes to show that no known research is available
                 let rvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "resultVC")
-                (rvc as! ResultsViewController).delegate = self
                 (rvc as! ResultsViewController).handler = self.handler
+                (rvc as! ResultsViewController).delegate = self
+                (rvc as! ResultsViewController).setValuesPerformSetup()
                 self.present(rvc, animated: true, completion: nil)
                 break
             case "RESULT":
                 //we push the ResultsViewController to the screen
                 //We need to send the data for the research over so it can be displayed.
                 let rvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "resultVC")
-                self.present(rvc, animated: true, completion: nil)
-                (rvc as! ResultsViewController).delegate = self
                 (rvc as! ResultsViewController).handler = self.handler
+                (rvc as! ResultsViewController).delegate = self
+                (rvc as! ResultsViewController).setValuesPerformSetup()
+                self.present(rvc, animated: true, completion: nil)
                 break
             default:
                 break
@@ -104,6 +114,21 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         self.dismiss(animated: true, completion: nil)
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+// MARK: ModularButtonViewDelegateMethods
+    func modularButtonViewTappedInactive(sender: ModularButtonView) {
+        
+    }
+    
+    func modularButtonViewViewDidPressButton(sender: UIButton, pressed: Int, view: UIView, options: [String]) {
+        var node:Node?
+        node = self.handler.giveInput(input: options[pressed-1], forNode: nil).nodes
+        self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
+        let currView = self.cellViews.last
+        (currView as! ModularButtonView).setInactive()
+        self.setupDetailView()
+    }
+    
     
 // MARK: DiscreteQuestionViewDelegate Methods
     
@@ -155,14 +180,20 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         self.animateAboveTextField()
     }
     
+    func rangeQuestionViewNeedsAlert(sender: Any, alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    var displacement:CGFloat?
     func animateAboveTextField() {
         UIView.animate(withDuration: 0.3, animations: {() in
-            self.tableViewTopLayoutConstraint.constant = -130;
+            self.tableViewTopLayoutConstraint.constant = -130
             self.markerViewTopLayoutConstraint.constant = -130
             self.markerView.setNeedsLayout()
             self.markerView.layoutIfNeeded()
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
+            //self.updateTableView()
         })
     }
     
@@ -174,6 +205,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             self.markerView.layoutIfNeeded()
             self.tableView.setNeedsLayout()
             self.tableView.layoutIfNeeded()
+            //self.updateTableView()
         })
     }
     
@@ -212,6 +244,19 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
         let currView = self.cellViews.last
         (currView as! LogicQuestionView).setInactive()
         self.setupDetailView()
+    }
+    
+    func logicQuestionViewModularAnswered(node: Node, sender: UIButton, pressed: Int, options: [String]) {
+        var node:Node?
+        node = self.handler.giveInput(input: options[pressed-1], forNode: nil).nodes
+        self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
+        let currView = self.cellViews.last
+        (currView as! LogicQuestionView).setInactive()
+        self.setupDetailView()
+    }
+    
+    func logicQuestionViewNeedsToPresentAlert(sender: Any, alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
     }
     
 
@@ -282,6 +327,12 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
                 v.setActive()
             }
             else if let v = self.cellViews.last as? DiscreteQuestionView {
+                v.setActive()
+            }
+            else if let v = self.cellViews.last as? LogicQuestionView{
+                v.setActive()
+            }
+            else if let v = self.cellViews.last as? ModularButtonView {
                 v.setActive()
             }
             self.tableView.reloadData()

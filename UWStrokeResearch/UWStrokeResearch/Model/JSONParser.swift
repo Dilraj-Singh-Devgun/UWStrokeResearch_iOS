@@ -17,7 +17,7 @@ public class JSONParser {
         var jsn:JSON?
         
         //get the path of the json file  and if we can exract the data from it make our json object
-        if let path = Bundle.main.path(forResource: "stroke_trial_decision_tree", ofType: "json") {
+        if let path = Bundle.main.path(forResource: "decision_tree", ofType: "json") {
             if let data = NSData(contentsOfFile: path) {
                 jsn = JSON(data: data as Data, options: .allowFragments, error: nil)
             }

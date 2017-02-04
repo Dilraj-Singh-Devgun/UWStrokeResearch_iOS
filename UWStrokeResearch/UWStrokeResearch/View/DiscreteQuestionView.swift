@@ -98,7 +98,6 @@ class DiscreteQuestionView: UIView {
         if let _ = self.delegate {
             delegate?.discreteQuestionViewDidPressButton(sender: sender, pressed: sender.tag, view:self)
         }
-        
     }
     
     //Manually set the question to be displayed

@@ -81,7 +81,7 @@ public class QuestionHandler {
             //get a dictionary of possible offshoot nodes
             let nextNodes = (self.currentQuestion as! DiscreteNode).nodeConnections
             //make our input lower case
-            let answer = input.lowercased()
+            let answer = input//.lowercased()
             //loop through every value and node in the next node dictionary
             for (value, next) in nextNodes! {
                 //if the user's input matches the value in our dictionary the we have found our associated node and we push the current question onto the stack, set the current question to the associated node and then return the new node and the question

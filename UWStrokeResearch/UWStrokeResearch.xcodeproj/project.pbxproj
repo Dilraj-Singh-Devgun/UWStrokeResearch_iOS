@@ -32,6 +32,8 @@
 		B4D2DF831E0C846B000910F8 /* BaseQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */; };
 		B4D2DF8B1E0C9349000910F8 /* NodeStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8A1E0C9349000910F8 /* NodeStack.swift */; };
 		B4D2DF8D1E0C9362000910F8 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D2DF8C1E0C9362000910F8 /* SwiftyJSON.swift */; };
+		B4D866F71E43D82D00F2D8F3 /* ModularButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D866F61E43D82D00F2D8F3 /* ModularButtonView.swift */; };
+		B4D866F91E43D84600F2D8F3 /* ModularButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4D866F81E43D84600F2D8F3 /* ModularButtonView.xib */; };
 		B4DE1B241E0CD03E008CAE67 /* DiscreteQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4DE1B231E0CD03E008CAE67 /* DiscreteQuestionView.xib */; };
 		B4DE1B261E0CD05D008CAE67 /* DiscreteQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */; };
 		B4DE1B281E0CD0E3008CAE67 /* RangeQuestionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */; };
@@ -89,6 +91,8 @@
 		B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseQuestionView.swift; path = View/BaseQuestionView.swift; sourceTree = "<group>"; };
 		B4D2DF8A1E0C9349000910F8 /* NodeStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeStack.swift; path = Model/NodeStack.swift; sourceTree = "<group>"; };
 		B4D2DF8C1E0C9362000910F8 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Model/SwiftyJSON.swift; sourceTree = "<group>"; };
+		B4D866F61E43D82D00F2D8F3 /* ModularButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModularButtonView.swift; path = View/ModularButtonView.swift; sourceTree = "<group>"; };
+		B4D866F81E43D84600F2D8F3 /* ModularButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ModularButtonView.xib; path = View/ModularButtonView.xib; sourceTree = "<group>"; };
 		B4DE1B231E0CD03E008CAE67 /* DiscreteQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscreteQuestionView.xib; path = View/DiscreteQuestionView.xib; sourceTree = "<group>"; };
 		B4DE1B251E0CD05D008CAE67 /* DiscreteQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscreteQuestionView.swift; path = View/DiscreteQuestionView.swift; sourceTree = "<group>"; };
 		B4DE1B271E0CD0E3008CAE67 /* RangeQuestionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RangeQuestionView.xib; path = View/RangeQuestionView.xib; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 		B4D2DF7F1E0B8486000910F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B4D866F81E43D84600F2D8F3 /* ModularButtonView.xib */,
+				B4D866F61E43D82D00F2D8F3 /* ModularButtonView.swift */,
 				B4D2DF801E0C7B8E000910F8 /* BaseQuestionView.xib */,
 				B4D2DF821E0C846B000910F8 /* BaseQuestionView.swift */,
 				B4DE1B231E0CD03E008CAE67 /* DiscreteQuestionView.xib */,
@@ -338,6 +344,7 @@
 				B4001E531DF38B3800237F5F /* stroke_trial_decision_tree.json in Resources */,
 				B40B05A91DEBA3DE008AF173 /* Main.storyboard in Resources */,
 				B4D2DF811E0C7B8E000910F8 /* BaseQuestionView.xib in Resources */,
+				B4D866F91E43D84600F2D8F3 /* ModularButtonView.xib in Resources */,
 				B4F9D1741E2DAB3A00F2DAE0 /* LogicQuestionView.xib in Resources */,
 				B40FE0141E405B6100784203 /* decision_tree.json in Resources */,
 			);
@@ -375,6 +382,7 @@
 				B41BECD41E11A71100838CDA /* ResultsViewController.swift in Sources */,
 				B40B05DB1DEBB4AB008AF173 /* ResultNode.swift in Sources */,
 				B4DE1B2A1E0CD0F8008CAE67 /* RangeQuestionView.swift in Sources */,
+				B4D866F71E43D82D00F2D8F3 /* ModularButtonView.swift in Sources */,
 				B4F9D1761E2DAB5300F2DAE0 /* LogicQuestionView.swift in Sources */,
 				B40B05D71DEBAAC5008AF173 /* LogicNode.swift in Sources */,
 				B40B05A41DEBA3DE008AF173 /* AppDelegate.swift in Sources */,

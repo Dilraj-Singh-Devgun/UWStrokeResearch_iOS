@@ -14,9 +14,11 @@ protocol LogicQuestionViewDelegate {
     func logicQuestoinViewStoppedEditing()
     func logicQuestionViewRangeAnswered(node:Node, value:String)
     func logicQuestionViewDiscreteAnswered(node:Node, sender:UIButton, pressed:Int)
+    func logicQuestionViewModularAnswered(node:Node, sender:UIButton, pressed:Int, options:[String])
+    func logicQuestionViewNeedsToPresentAlert(sender:Any, alert:UIAlertController)
 }
 
-class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionViewDelegate{
+class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionViewDelegate, ModularButtonViewDeleate{
 
     @IBOutlet weak var topQuestionView: UIView!
     @IBOutlet weak var bottomQuestionView: UIView!
@@ -90,8 +92,18 @@ class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionView
             
             switch node.type {
             case "BUTTON":
-                let qv = DiscreteQuestionView(frame: frame, question: node.question)
+                
+                let qv = ModularButtonView(frame: CGRect(x:0, y:0, width:frame.width, height: 200), question: node.question)
+                let options = (node as! DiscreteNode).nodeConnections
+                var bttnOptions:[String] = []
+                for (value, _) in options! {
+                    bttnOptions.append(value)
+                }
+                qv.setButtons(buttons: bttnOptions, width: frame.width)
                 qv.delegate = self
+                
+//                let qv = DiscreteQuestionView(frame: frame, question: node.question)
+//                qv.delegate = self
                 qv.tag = i + 1
                 subview?.addSubview(qv)
                 break
@@ -104,6 +116,20 @@ class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionView
             default:
                 break
             }
+        }
+    }
+    
+    func modularButtonViewViewDidPressButton(sender: UIButton, pressed: Int, view: UIView, options: [String]) {
+        let num = view.tag - 1
+        self.setInactive()
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewModularAnswered(node: num == 0 ? self.questionNode1! : self.questionNode2!, sender: sender, pressed: pressed, options: options)
+        }
+    }
+    
+    func modularButtonViewTappedInactive(sender: ModularButtonView) {
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewTappedInactive()
         }
     }
     
@@ -145,6 +171,12 @@ class LogicQuestionView: UIView, RangeQuestionViewDelegate, DiscreteQuestionView
     func rangeQestionViewTappedInactive(sender: RangeQuestionView) {
         if let _ = self.delegate {
             self.delegate?.logicQuestionViewTappedInactive()
+        }
+    }
+    
+    func rangeQuestionViewNeedsAlert(sender: Any, alert: UIAlertController) {
+        if let _ = self.delegate {
+            self.delegate?.logicQuestionViewNeedsToPresentAlert(sender: sender, alert: alert)
         }
     }
     
