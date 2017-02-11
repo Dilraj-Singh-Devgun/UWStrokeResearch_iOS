@@ -167,7 +167,6 @@ class ModularButtonView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pressedButton(sender:UIButton) {
-        print(sender.tag)
         let pressedTag = sender.tag
         if let buttons = self.bttns {
             for i in 0 ..< buttons.count {

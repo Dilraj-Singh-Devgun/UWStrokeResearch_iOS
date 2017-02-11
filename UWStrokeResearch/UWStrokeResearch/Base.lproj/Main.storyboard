@@ -68,7 +68,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UW Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tPu-HI-Lb3">
                                 <rect key="frame" x="74.5" y="94" width="225" height="133.5"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Clinical Research Trials Available for Subject Enrollment" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-bk-lzl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Clinical Research Trials Available for Subject Enrollment" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-bk-lzl">
                                 <rect key="frame" x="46.5" y="513.5" width="281" height="133.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.0" blue="0.43529411764705883" alpha="1" colorSpace="calibratedRGB"/>
@@ -169,7 +169,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dsw-te-4Lq" id="3in-hz-MHM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6N-gj-eOG">

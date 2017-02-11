@@ -19,7 +19,7 @@
 		"question": "Hours Since Last Known Normal",
 		"options": [
 			{"type": "RANGE", "lower": 0, "upper": 7, "next": "q003"},
-			{"type": "RANGE", "lower": 6, "upper": 10, "next": "q011"},
+			{"type": "RANGE", "lower": 7, "upper": 10, "next": "q011"},
 			{"type": "RANGE", "lower": 10, "upper": 13, "next": "q010"},
 			{"type": "RANGE", "lower": 13, "upper": 17, "next": "q005"},
 			{"type": "RANGE", "lower": 17, "upper": 100, "next": "r000"}
@@ -63,7 +63,7 @@
 		"type": "NUMBER",
 		"question": "NIHSS Score",
 		"options": [
-			{"type": "RANGE", "lower": -1, "upper": 3, "next": "r001"},
+			{"type": "RANGE", "lower": 0, "upper": 3, "next": "r001"},
 			{"type": "EQUAL", "value": 3, "next": "q008"},
 			{"type": "EQUAL", "value": 4, "next": "q006"},
 			{"type": "EQUAL", "value": 5, "next": "q009"},
