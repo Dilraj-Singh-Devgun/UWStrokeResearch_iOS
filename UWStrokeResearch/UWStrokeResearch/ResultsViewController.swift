@@ -14,7 +14,7 @@ protocol ResultsViewControllerDelegate {
 
 class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
-    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var phoneNumberField: UITextView!
     @IBOutlet weak var researcherNameLabel: UILabel!
     @IBOutlet weak var researchTrialLabel: UILabel!
     @IBOutlet weak var answerTableView: UITableView!
@@ -53,11 +53,10 @@ class ResultsViewController: UIViewController, UITableViewDelegate, UITableViewD
         if currNode?.type == "UNKNOWN" {
             return
         }
-        self.phoneNumberLabel.adjustsFontSizeToFitWidth = true
         self.researcherNameLabel.adjustsFontSizeToFitWidth = true
         self.researchTrialLabel.adjustsFontSizeToFitWidth = true
         
-        self.phoneNumberLabel.text = (currNode as! ResultNode).phone
+        self.phoneNumberField.text = (currNode as! ResultNode).phone
         self.researcherNameLabel.text = (currNode as! ResultNode).researcher
         self.researchTrialLabel.text = currNode?.question
     }

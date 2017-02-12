@@ -22,7 +22,7 @@ struct HistoryList {
     }
     mutating func getItems() -> [(Node, String)] {
         var itemsCopy:[(Node,String)] = []
-        for var i in 0..<items.count {
+        for i in 0..<items.count {
             itemsCopy.append(items[i])
         }
         return itemsCopy

@@ -47,7 +47,8 @@ public class JSONParser {
         //base case return result node
         if QID.characters.first == "r" {
             let message = json[QID]["message"].string!
-            return ResultNode(qid: QID, q: message, t: type)
+            let phoneNum = json[QID]["phone"].string!
+            return ResultNode(qid: QID, q: message, t: type, pnumber: phoneNum, r: "Call Glenn Schubert")
         }
         //switch on the type
         switch type {

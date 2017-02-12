@@ -14,11 +14,13 @@ import Foundation
 class DiscreteNode: Node {
     var connections:[String:String]!
     var nodeConnections:[String: Node?]!
+    var nodeConnOptions:[String]!
     
     init(nc: Int, qid: String, q: String) {
         super.init(nc: nc, qid: qid, q: q, t: "BUTTON")
         self.connections = [:]
         self.nodeConnections = [:]
+        self.nodeConnOptions = []
     }
     
     func addNode(option:String, next:String) {
@@ -27,6 +29,8 @@ class DiscreteNode: Node {
     
     func addNode(option:String, next:Node?) {
         self.nodeConnections.updateValue(next, forKey: option)
+        self.nodeConnOptions.append(option);
+        print("\(question) \(nodeConnOptions)")
     }
     
 }

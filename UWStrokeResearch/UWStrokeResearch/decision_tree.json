@@ -260,7 +260,8 @@
 	},
 	"r000": {
 		"type": "UNKNOWN",
-		"message": "No studies available."
+		"message": "No studies available.",
+        "phone": "000-000-0000"
 	},
 	"r001": {
 		"type": "RESULT",

@@ -169,7 +169,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dsw-te-4Lq" id="3in-hz-MHM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6N-gj-eOG">
@@ -186,6 +186,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="M6N-gj-eOG" firstAttribute="width" relation="lessThanOrEqual" secondItem="3in-hz-MHM" secondAttribute="width" multiplier="0.8" id="IAD-xd-YIz"/>
                                                 <constraint firstItem="pSS-JU-MAo" firstAttribute="centerY" secondItem="3in-hz-MHM" secondAttribute="centerY" id="fRF-he-xGY"/>
                                                 <constraint firstItem="M6N-gj-eOG" firstAttribute="centerY" secondItem="3in-hz-MHM" secondAttribute="centerY" id="giI-qf-7Jl"/>
                                                 <constraint firstItem="M6N-gj-eOG" firstAttribute="leading" secondItem="3in-hz-MHM" secondAttribute="leadingMargin" constant="8" id="hnM-Aa-z0Q"/>
@@ -240,12 +241,16 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lb-PC-ybE">
-                                                <rect key="frame" x="8" y="182" width="292" height="24"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="phone number" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rH7-Me-jJz">
+                                                <rect key="frame" x="0.0" y="184" width="300" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="8Ii-CF-2gh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -253,13 +258,13 @@
                                             <constraint firstItem="FTW-V5-yby" firstAttribute="leading" secondItem="hFB-xu-1ES" secondAttribute="leading" constant="8" id="0en-m9-UgS"/>
                                             <constraint firstItem="zcH-aQ-RNs" firstAttribute="leading" secondItem="FTW-V5-yby" secondAttribute="leading" id="14H-aF-j3E"/>
                                             <constraint firstItem="zcH-aQ-RNs" firstAttribute="top" secondItem="FTW-V5-yby" secondAttribute="bottom" constant="8" id="2Ww-GE-na1"/>
-                                            <constraint firstItem="5lb-PC-ybE" firstAttribute="trailing" secondItem="zcH-aQ-RNs" secondAttribute="trailing" id="4AU-B5-6fv"/>
+                                            <constraint firstItem="rH7-Me-jJz" firstAttribute="trailing" secondItem="zcH-aQ-RNs" secondAttribute="trailing" id="Tvg-42-ra3"/>
+                                            <constraint firstItem="rH7-Me-jJz" firstAttribute="top" secondItem="zcH-aQ-RNs" secondAttribute="bottom" constant="10" id="cmQ-HJ-wXq"/>
                                             <constraint firstItem="FTW-V5-yby" firstAttribute="top" secondItem="hFB-xu-1ES" secondAttribute="bottom" constant="20" id="epD-xD-Wxh"/>
                                             <constraint firstItem="hFB-xu-1ES" firstAttribute="top" secondItem="e5E-KX-1dy" secondAttribute="top" constant="8" id="gZE-n7-jBV"/>
-                                            <constraint firstItem="5lb-PC-ybE" firstAttribute="leading" secondItem="zcH-aQ-RNs" secondAttribute="leading" id="nXW-6b-KyJ"/>
                                             <constraint firstItem="zcH-aQ-RNs" firstAttribute="trailing" secondItem="FTW-V5-yby" secondAttribute="trailing" id="sxk-YU-AdW"/>
                                             <constraint firstItem="FTW-V5-yby" firstAttribute="trailing" secondItem="hFB-xu-1ES" secondAttribute="trailing" id="t2M-az-qea"/>
-                                            <constraint firstItem="5lb-PC-ybE" firstAttribute="top" secondItem="zcH-aQ-RNs" secondAttribute="bottom" constant="8" id="uLk-J6-ZNi"/>
+                                            <constraint firstItem="rH7-Me-jJz" firstAttribute="leading" secondItem="hFB-xu-1ES" secondAttribute="leading" id="t3t-j2-hST"/>
                                             <constraint firstItem="hFB-xu-1ES" firstAttribute="width" secondItem="e5E-KX-1dy" secondAttribute="width" id="wz5-0B-Gji"/>
                                         </constraints>
                                     </view>
@@ -291,7 +296,7 @@
                     </view>
                     <connections>
                         <outlet property="answerTableView" destination="t28-YA-CgK" id="W9o-3f-nbW"/>
-                        <outlet property="phoneNumberLabel" destination="5lb-PC-ybE" id="imc-sD-zef"/>
+                        <outlet property="phoneNumberField" destination="rH7-Me-jJz" id="RNk-MY-Z6U"/>
                         <outlet property="researchTrialLabel" destination="FTW-V5-yby" id="WUe-Vu-WQE"/>
                         <outlet property="researcherNameLabel" destination="zcH-aQ-RNs" id="eu3-Ie-oJy"/>
                     </connections>

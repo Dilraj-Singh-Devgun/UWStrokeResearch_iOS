@@ -55,12 +55,12 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             case "BUTTON":
                 //if the new node is a button type then we make a DiscreteQuestionView with the delegate set to self. Once made we update the table view to display all the cells and introduce the new question
                 qv = ModularButtonView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
-                let options = (self.currentQuestion.node! as! DiscreteNode).nodeConnections
-                var bttnOptions:[String] = []
-                for (value, _) in options! {
-                    bttnOptions.append(value)
-                }
-                (qv as! ModularButtonView).setButtons(buttons: bttnOptions, width: self.view.frame.width)
+                let options = (self.currentQuestion.node! as! DiscreteNode).nodeConnOptions
+//                var bttnOptions:[String] = []
+//                for (value, _) in options! {
+//                    bttnOptions.append(value)
+//                }
+                (qv as! ModularButtonView).setButtons(buttons: options!, width: self.view.frame.width)
                 (qv as! ModularButtonView).delegate = self
 //                qv = DiscreteQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
 //                (qv as! DiscreteQuestionView).delegate = self
@@ -105,6 +105,13 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
             default:
                 break
             }
+        }
+        else {
+            let alert = UIAlertController(title: "Invalid Input", message: self.currentQuestion!.message, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            self.draggedUp = true
+            self.handleDraggedUp()
         }
     }
     
@@ -157,8 +164,10 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     //When a range is entered we move the node based on the user's input and load the next question for the client
     func rangeQuestionViewDidPressButton(value: String, view:UIView) {
-        let node = self.handler.giveInput(input: value, forNode: nil).nodes
-        self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
+        let output = self.handler.giveInput(input: value, forNode: nil)
+        let node = output.nodes
+        let message = output.message
+        self.currentQuestion = (node, message)
         let currView = self.cellViews.last
         (currView as! RangeQuestionView).setInactive()
         self.setupDetailView()

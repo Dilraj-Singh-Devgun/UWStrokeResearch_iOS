@@ -22,6 +22,8 @@ class AnswerTableViewCell: UITableViewCell {
     }
 
     func setQuestionAndAnswer(question:String, answer:String) {
+        self.questionLabel.adjustsFontSizeToFitWidth = true
+        self.answerLabel.adjustsFontSizeToFitWidth = true
         self.questionLabel.text = question
         self.answerLabel.text = answer
         self.questionLabel.sizeToFit()

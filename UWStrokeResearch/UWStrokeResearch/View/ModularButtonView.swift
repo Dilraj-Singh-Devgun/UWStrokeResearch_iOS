@@ -115,6 +115,7 @@ class ModularButtonView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func setButtons(buttons:[String], width:CGFloat) {
+        print(buttons)
         if (buttons.count > 4) {
             //make picker view with the button strings
 //            var pickerView:UIPickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: width, height: self.buttonAreaView.frame.height))
@@ -146,26 +147,32 @@ class ModularButtonView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
+    //sets up number of rows in a pickerview
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return self.buttonOptions.count
     }
     
+    //notify the delegate that the pickerview option was picked
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
     }
     
+    //the title for the row in the pickerview
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return self.buttonOptions[row]
     }
     
+    //Row height for each picker view
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 44
     }
     
+    //number of components
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    //when an option button is pressed
     func pressedButton(sender:UIButton) {
         let pressedTag = sender.tag
         if let buttons = self.bttns {
