@@ -125,7 +125,7 @@ class RangeQuestionView: UIView {
         self.coverView!.backgroundColor = UIColor.white
         self.coverView!.alpha = 0.8
         self.addSubview(coverView!)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(DiscreteQuestionView.didTapOldView))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RangeQuestionView.didTapOldView))
         coverView!.addGestureRecognizer(tap)
     }
     

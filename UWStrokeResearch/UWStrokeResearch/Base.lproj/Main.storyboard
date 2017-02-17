@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPG-On-dyu">
-                                <rect key="frame" x="0.0" y="233" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="253.5" width="375" height="200"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxC-SC-m1h">
                                         <rect key="frame" x="119.5" y="43.5" width="135" height="43"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UW Logo" translatesAutoresizingMaskIntoConstraints="NO" id="tPu-HI-Lb3">
-                                <rect key="frame" x="74.5" y="94" width="225" height="133.5"/>
+                                <rect key="frame" x="74.5" y="84" width="225" height="133.5"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Clinical Research Trials Available for Subject Enrollment" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fA5-bk-lzl">
                                 <rect key="frame" x="46.5" y="513.5" width="281" height="133.5"/>
@@ -80,18 +80,19 @@
                         <constraints>
                             <constraint firstItem="tPu-HI-Lb3" firstAttribute="centerX" secondItem="WyN-eX-1uh" secondAttribute="centerX" id="0tQ-tl-X8n"/>
                             <constraint firstItem="fA5-bk-lzl" firstAttribute="centerX" secondItem="WyN-eX-1uh" secondAttribute="centerX" id="6Aq-7H-Y5i"/>
-                            <constraint firstItem="uPG-On-dyu" firstAttribute="centerY" secondItem="WyN-eX-1uh" secondAttribute="centerY" id="IyX-L0-hxi"/>
+                            <constraint firstItem="uPG-On-dyu" firstAttribute="centerY" secondItem="WyN-eX-1uh" secondAttribute="centerY" constant="20" id="IyX-L0-hxi"/>
                             <constraint firstItem="tPu-HI-Lb3" firstAttribute="width" secondItem="WyN-eX-1uh" secondAttribute="width" multiplier="0.6" id="LEJ-dr-679"/>
                             <constraint firstItem="AxC-SC-m1h" firstAttribute="height" secondItem="WyN-eX-1uh" secondAttribute="height" multiplier="0.065" id="MbL-w8-W6o"/>
                             <constraint firstItem="uPG-On-dyu" firstAttribute="height" secondItem="WyN-eX-1uh" secondAttribute="height" multiplier="0.3" id="QU9-CL-G9f"/>
                             <constraint firstItem="0gy-Z2-VbM" firstAttribute="height" secondItem="WyN-eX-1uh" secondAttribute="height" multiplier="0.065" id="Sul-zw-JTG"/>
                             <constraint firstItem="fA5-bk-lzl" firstAttribute="width" secondItem="WyN-eX-1uh" secondAttribute="width" multiplier="0.75" id="TOc-ER-ENj"/>
                             <constraint firstItem="uPG-On-dyu" firstAttribute="width" secondItem="WyN-eX-1uh" secondAttribute="width" id="YQu-xR-aJi"/>
-                            <constraint firstItem="tPu-HI-Lb3" firstAttribute="top" secondItem="MNU-5w-OJr" secondAttribute="bottom" constant="30" id="ZVb-gx-L8m"/>
+                            <constraint firstItem="tPu-HI-Lb3" firstAttribute="top" secondItem="MNU-5w-OJr" secondAttribute="bottom" constant="20" id="ZVb-gx-L8m"/>
                             <constraint firstItem="fA5-bk-lzl" firstAttribute="height" secondItem="WyN-eX-1uh" secondAttribute="height" multiplier="0.2" id="bLz-eM-viL"/>
                             <constraint firstItem="tPu-HI-Lb3" firstAttribute="height" secondItem="WyN-eX-1uh" secondAttribute="height" multiplier="0.2" id="hWi-CI-jNr"/>
                             <constraint firstItem="uPG-On-dyu" firstAttribute="centerX" secondItem="WyN-eX-1uh" secondAttribute="centerX" id="jdq-iM-D88"/>
                             <constraint firstItem="Wqa-DP-iR5" firstAttribute="top" secondItem="fA5-bk-lzl" secondAttribute="bottom" constant="20" id="ptR-zL-hhA"/>
+                            <constraint firstItem="AxC-SC-m1h" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tPu-HI-Lb3" secondAttribute="bottom" constant="49" id="x16-qK-FGQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cfs-r7-j2S"/>
@@ -296,6 +297,7 @@
                     </view>
                     <connections>
                         <outlet property="answerTableView" destination="t28-YA-CgK" id="W9o-3f-nbW"/>
+                        <outlet property="eligabilityMessage" destination="hFB-xu-1ES" id="KSc-NJ-CB3"/>
                         <outlet property="phoneNumberField" destination="rH7-Me-jJz" id="RNk-MY-Z6U"/>
                         <outlet property="researchTrialLabel" destination="FTW-V5-yby" id="WUe-Vu-WQE"/>
                         <outlet property="researcherNameLabel" destination="zcH-aQ-RNs" id="eu3-Ie-oJy"/>

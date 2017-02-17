@@ -135,9 +135,21 @@ class ModularButtonView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             }
             for i in 0 ..< buttons.count {
                 let bttn = UIButton(frame: CGRect(x: width*0.1 + CGFloat(i)*CGFloat(buttonSpacing+bttnWidth), y: 65-(bttnHeight/2), width: bttnWidth, height: bttnHeight))
-                bttn.backgroundColor = UIColor.black
+                switch buttons[i].lowercased() {
+                case "yes":
+                    bttn.backgroundColor = UIColor(red: 60/255, green: 209/255, blue: 152/255, alpha: 1)
+                case "no":
+                    bttn.backgroundColor = UIColor(red: 255/255, green: 94/255, blue: 100/255, alpha: 1)
+                case "maybe":
+                    bttn.backgroundColor = UIColor(red: 188/255, green: 182/255, blue: 182/255, alpha: 1)
+                case "unknown":
+                    bttn.backgroundColor = UIColor(red: 188/255, green: 182/255, blue: 182/255, alpha: 1)
+                default:
+                    bttn.backgroundColor = UIColor(red: 110/255, green: 207/255, blue: 205/255, alpha: 1)
+                }
                 bttn.layer.cornerRadius = 10
                 bttn.setTitle(buttons[i], for: UIControlState.normal)
+                bttn.titleLabel?.adjustsFontSizeToFitWidth = true
                 bttn.titleLabel?.textColor = UIColor.white
                 bttn.tag = i+1
                 bttn.addTarget(self, action: #selector(pressedButton(sender:)), for: UIControlEvents.touchUpInside)
