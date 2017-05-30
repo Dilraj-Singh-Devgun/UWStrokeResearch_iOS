@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, LogicQuestionViewDelegate, ResultsViewControllerDelegate, ModularButtonViewDeleate {
+class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuestionViewDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, LogicQuestionViewDelegate, ResultsViewControllerDelegate, ModularButtonViewDeleate, DatabaseProtocol {
 
     var handler:QuestionHandler! // the question node handler which traverses our tree
     var currentQuestion:(node: Node?, message:String)! // a tuple which holds the current node and question
@@ -25,11 +25,14 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        DatabaseConnection.makeGetRequestForJSONFile(callback: self)
+        
         //basic setup for
         // create the handler, get the current node and set up the table view's delegate and data source
-        self.handler = QuestionHandler()
-        let node = self.handler.giveInput(input: "start", forNode: nil).nodes
-        self.currentQuestion = (node, handler.getCurrentQuestion().question)
+//        self.handler = QuestionHandler()
+//        let node = self.handler.giveInput(input: "start", forNode: nil).nodes
+//        self.currentQuestion = (node, handler.getCurrentQuestion().question)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         cellViews = []
@@ -41,10 +44,41 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if firstLoad == true {
-            self.setupDetailView()
+//        if firstLoad == true {
+//            self.setupDetailView()
+//        }
+//        self.firstLoad = false
+    }
+    
+    func databaseSetupCallback(response: String?) {
+        
+        DispatchQueue.main.async {
+            if let _ = response {
+                print(response)
+                self.handler = QuestionHandler(jsonString: response!)
+                if let _ = self.handler.getCurrentQuestion().node {
+                    let node = self.handler.giveInput(input: "start", forNode: nil).nodes
+                    self.currentQuestion = (node, self.handler.getCurrentQuestion().question)
+                    if self.firstLoad == true {
+                        self.setupDetailView()
+                    }
+                    self.firstLoad = false
+                }
+                else {
+                    self.presentErrorParsingDatabaseFile()
+                }
+            }
+            else {
+                self.presentErrorParsingDatabaseFile()
+            }
+            print("here")
         }
-        self.firstLoad = false
+    }
+    
+    func presentErrorParsingDatabaseFile() {
+        let alert = UIAlertController(title: "Error", message: "Could not get data from database", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     //sets up the next view to be put in the tableview based on the new node

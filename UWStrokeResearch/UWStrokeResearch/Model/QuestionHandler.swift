@@ -22,6 +22,13 @@ public class QuestionHandler {
         self.currentQuestion = parser.getNodeTree()
     }
     
+    init(jsonString: String) {
+        self.history = NodeStack()
+        self.parser = JSONParser()
+        self.answerHistory = HistoryList()
+        self.currentQuestion = parser.getNodeTree(jsnString: jsonString)
+    }
+    
     //returns the current question and the question/message of the current node
     func getCurrentQuestion() -> (node:Node?, question:String) {
         //if the current question is an OR return the 
@@ -34,7 +41,7 @@ public class QuestionHandler {
             return (self.currentQuestion, rn.question + ". Please contact " + rn.researcher + " at " + rn.phone)
         }
         //if the current question is a different node type get the single message of one node and then return that node with the message
-        return (self.currentQuestion, (self.currentQuestion?.question!)!)
+        return self.currentQuestion != nil ? (self.currentQuestion, (self.currentQuestion?.question!)!) : (nil, "error")
     }
     
     //returns the type of the current question

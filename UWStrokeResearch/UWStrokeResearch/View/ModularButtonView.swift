@@ -144,6 +144,10 @@ class ModularButtonView: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
                     bttn.backgroundColor = UIColor(red: 188/255, green: 182/255, blue: 182/255, alpha: 1)
                 case "unknown":
                     bttn.backgroundColor = UIColor(red: 188/255, green: 182/255, blue: 182/255, alpha: 1)
+                case "hemorrhagic":
+                    bttn.backgroundColor = UIColor(red: 255/255, green: 94/255, blue: 100/255, alpha: 1)
+                case "ischemic":
+                    bttn.backgroundColor = UIColor(red: 188/255, green: 182/255, blue: 182/255, alpha: 1)
                 default:
                     bttn.backgroundColor = UIColor(red: 110/255, green: 207/255, blue: 205/255, alpha: 1)
                 }

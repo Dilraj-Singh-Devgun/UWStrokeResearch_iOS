@@ -11,24 +11,47 @@ import UIKit
 
 public class JSONParser {
     
+    
+    
     //Constructs a node tree by going through the json file
     func getNodeTree() -> Node?{
-        var root:Node?
         var jsn:JSON?
-        
         //get the path of the json file  and if we can exract the data from it make our json object
         if let path = Bundle.main.path(forResource: "decision_tree_updated", ofType: "json") {
             if let data = NSData(contentsOfFile: path) {
                 jsn = JSON(data: data as Data, options: .allowFragments, error: nil)
             }
         }
+        return processJsn(jsn: jsn)
+    }
+    
+    func getNodeTree(jsnString: String) -> Node? {
+        var jsn: JSON?
+        
+        
+//        if let data = NSData(contentsOfFile: jsnString) {
+        if let data = jsnString.data(using: .utf8) {
+            print(data)
+            jsn = JSON(data: data, options: .allowFragments, error: nil)
+        }
+        return processJsn(jsn: jsn)
+    }
+    
+    func processJsn(jsn: JSON?) -> Node? {
+        var root:Node?
+        
         //if the json object is not null then the json file has been properly loaded using swiftyjson
         if let json = jsn {
             print("json loaded")
             print()
-            //start at the base node of q000
-            if json["q000"] != JSON.null{
-                root = processNode(QID: "q000", json :json)
+            
+            if json["file"] != JSON.null {
+                //start at the base node of q000
+                let unwrappedJSON = JSON(data: (json["file"].string!.data(using: .utf8))!, options: .allowFragments, error: nil)
+                if unwrappedJSON["q000"] != JSON.null{
+                    print("here3")
+                    root = processNode(QID: "q000", json: unwrappedJSON)
+                }
             }
         }
         else {
