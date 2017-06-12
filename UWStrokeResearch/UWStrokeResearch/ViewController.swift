@@ -103,7 +103,7 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
                 break
             case "NUMBER":
                 //if the new node is a number type then we make a RangeQuestionView with the delegate set to self. Once made we update the table view to display all the cells and introduce the new question
-                qv = RangeQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 200), question: self.currentQuestion.message)
+                qv = RangeQuestionView(frame: CGRect(x:0, y:0, width:self.view.frame.width, height: 250), question: self.currentQuestion.message)
                 (qv as! RangeQuestionView).delegate = self
                 self.cellViews.append(qv)
                 self.updateTableView()
@@ -230,8 +230,8 @@ class ViewController: UIViewController, DiscreteQuestionViewDelegate, RangeQuest
     var displacement:CGFloat?
     func animateAboveTextField() {
         UIView.animate(withDuration: 0.3, animations: {() in
-            self.tableViewTopLayoutConstraint.constant = -130
-            self.markerViewTopLayoutConstraint.constant = -130
+            self.tableViewTopLayoutConstraint.constant = -220
+            self.markerViewTopLayoutConstraint.constant = -220
             self.markerView.setNeedsLayout()
             self.markerView.layoutIfNeeded()
             self.tableView.setNeedsLayout()
